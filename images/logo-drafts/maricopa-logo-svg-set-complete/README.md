@@ -6,6 +6,8 @@ Each concept includes:
 - `*-lockup.svg`: editable horizontal logo retaining live text.
 - `*-symbol.svg`: icon-only mark for responsive website headers, favicons, and compact UI.
 
+V6 and V7 are symbol-only concepts (no lockup) and each include a `*-symbol-monochrome.svg` single-color variant. Their viewBox is a 512×512 square, which fits the current `.brand-mark` header CSS as-is — unlike V1–V4's 140×170 symbols, which need a CSS adjustment first (see main feedback).
+
 ## Recommended website use
 
 Use the icon-only SVG beside live HTML text in the primary site header. This keeps the long department name readable and responsive.

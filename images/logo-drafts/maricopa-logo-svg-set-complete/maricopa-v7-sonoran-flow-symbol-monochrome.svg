@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision">
+  <title id="title">Maricopa Sonoran flow symbol, monochrome</title>
+  <desc id="desc">A single-color desert sun, three rising landforms, and a flowing water channel.</desc>
+  <g fill="#0D1F3D">
+    <path d="M62 256a112 112 0 0 1 184-86l-77 37-49 50Z"/>
+    <path d="m142 258 55-78 49-23 54-91 113-31v68l-67 19-39 63-64 24-44 49Z"/>
+    <path d="m214 260 47-48 49-17 46-54 88-22v67l-61 13-44 42-69 19Z"/>
+    <path d="m278 278 39-29 55-8 39-25 64-6v69H329Z"/>
+    <path d="M48 307c69-24 164-23 213 5 33 19 41 43 17 62-24 20-22 36 8 51 34 17 92 21 177 7-52 38-139 52-222 38-72-12-118-39-113-73 3-21 22-36 49-50 16-8 17-17 2-25-24-13-73-18-131-15Z"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision">
+  <title id="title">Maricopa canal M symbol</title>
+  <desc id="desc">A connected navy M frames a blue canal in perspective beneath an orange desert sun.</desc>
+
+  <!-- Arizona sun -->
+  <circle cx="256" cy="84" r="40" fill="#D4952E"/>
+
+  <!-- One continuous, symmetrical M -->
+  <path fill="#0D1F3D" d="M46 454 114 68l142 120L398 68l68 386-108-92-18-156-64 54h-40l-64-54-18 156Z"/>
+
+  <!-- Perspective canal with restrained geometric widening -->
+  <path fill="#2563A8" d="m244 278h24l12 10 24 26-22 6 148 132H82l148-132-22-6 24-26Z"/>
+</svg>
