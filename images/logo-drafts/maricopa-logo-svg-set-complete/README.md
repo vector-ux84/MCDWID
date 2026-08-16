@@ -24,10 +24,14 @@ The editable lockups use Georgia Bold and Arial. Use the outlined lockups when e
 
 ## Palette
 
-- Civic navy: `#14233D`
-- Water blue: `#2D70B7`
-- Secondary blue-gray: `#5F708C`
-- Desert orange: `#E98232`
-- Desert sand: `#D4B96E`
+Colors are matched to the site's current CSS variables (`css/styles.css`, Corporate Blue scheme):
+
+- Civic navy: `#0D1F3D` (`--navy`)
+- Water blue: `#2563A8` (`--teal`)
+- Secondary blue-gray: `#5B6B82` (`--muted`)
+- Desert orange: `#D4952E` (`--gold`)
+- Desert sand: `#E3BA77` (tint of `--gold` — Corporate Blue has no warm/tan color, so this is derived rather than matched)
+
+These are baked-in hex values, not `var()` references — SVGs loaded via `<img>` can't see the host page's CSS variables. If the site's color scheme changes, these values need to be re-matched (or the chosen logo inlined directly into the HTML instead of referenced via `<img>`).
 
 All marks use flat fills and contain no gradients, filters, or embedded raster images.

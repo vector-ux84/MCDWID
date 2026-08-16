@@ -9,5 +9,5 @@
       <path d="M23 126c17-4 31 7 48 7 18 0 30-9 45-15" fill="none" stroke="#000" stroke-width="8" stroke-linecap="round"/>
     </mask>
   </defs>
-  <path d="M70 8C50 37 22 72 22 105c0 30 21 53 48 53s48-23 48-53C118 72 90 37 70 8Z" fill="#2D70B7" mask="url(#v1-cutouts)"/>
+  <path d="M70 8C50 37 22 72 22 105c0 30 21 53 48 53s48-23 48-53C118 72 90 37 70 8Z" fill="#2563A8" mask="url(#v1-cutouts)"/>
 </svg>

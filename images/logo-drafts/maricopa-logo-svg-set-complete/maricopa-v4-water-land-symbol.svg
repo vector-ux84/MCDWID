@@ -10,9 +10,9 @@
       <path d="M15 117c19-8 34-2 51 6 18 9 36 10 62-4" fill="none" stroke="#000" stroke-width="6" stroke-linecap="round"/>
     </mask>
   </defs>
-  <path d="M70 8C50 37 28 65 23 96l22 2c5-22 15-43 25-55 10 12 20 33 25 55l22-2C112 65 90 37 70 8Z" fill="#D4B96E"/>
+  <path d="M70 8C50 37 28 65 23 96l22 2c5-22 15-43 25-55 10 12 20 33 25 55l22-2C112 65 90 37 70 8Z" fill="#E3BA77"/>
   <g clip-path="url(#v4-drop)" mask="url(#v4-gap)">
-    <path d="M12 97c22-11 38-8 55 1 18 10 37 11 63-3v31H12Z" fill="#14233D"/>
-    <path d="M12 121c21-9 36-2 54 7 18 8 37 9 64-6v49H12Z" fill="#2D70B7"/>
+    <path d="M12 97c22-11 38-8 55 1 18 10 37 11 63-3v31H12Z" fill="#0D1F3D"/>
+    <path d="M12 121c21-9 36-2 54 7 18 8 37 9 64-6v49H12Z" fill="#2563A8"/>
   </g>
 </svg>
