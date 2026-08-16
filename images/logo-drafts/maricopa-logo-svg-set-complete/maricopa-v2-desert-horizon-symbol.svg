@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 170" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision">
+  <title id="title">Maricopa desert horizon water symbol</title>
+  <desc id="desc">A navy water droplet containing a desert mesa, rising orange sun, and flowing water.</desc>
+  <defs>
+    <clipPath id="v2-drop">
+      <path d="M70 8C50 37 22 72 22 105c0 30 21 53 48 53s48-23 48-53C118 72 90 37 70 8Z"/>
+    </clipPath>
+    <mask id="v2-cutouts" maskUnits="userSpaceOnUse" x="0" y="0" width="140" height="170">
+      <rect width="140" height="170" fill="#000"/>
+      <path d="M70 8C50 37 22 72 22 105c0 30 21 53 48 53s48-23 48-53C118 72 90 37 70 8Z" fill="#fff"/>
+      <path d="M19 111 43 91h37l8-9h31" fill="none" stroke="#000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M17 124c21-7 34 4 53 3 22-1 32-12 55-10" fill="none" stroke="#000" stroke-width="9" stroke-linecap="round"/>
+    </mask>
+  </defs>
+  <path d="M70 8C50 37 22 72 22 105c0 30 21 53 48 53s48-23 48-53C118 72 90 37 70 8Z" fill="#14233D" mask="url(#v2-cutouts)"/>
+  <circle cx="91" cy="84" r="12" fill="#E98232" clip-path="url(#v2-drop)"/>
+</svg>
