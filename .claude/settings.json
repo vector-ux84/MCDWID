@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\patri\\\\maricopa-dwid-redesign\\\\css\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\patri\\\\maricopa-dwid-redesign\\\\js\")",
+      "PowerShell(Move-Item -Path \"c:\\\\Users\\\\patri\\\\maricopa-dwid-redesign\\\\styles.css\" -Destination \"c:\\\\Users\\\\patri\\\\maricopa-dwid-redesign\\\\css\\\\styles.css\")",
+      "PowerShell(Move-Item -Path \"c:\\\\Users\\\\patri\\\\maricopa-dwid-redesign\\\\script.js\" -Destination \"c:\\\\Users\\\\patri\\\\maricopa-dwid-redesign\\\\js\\\\script.js\")",
+      "PowerShell(Remove-Item -Path \"c:\\\\Users\\\\patri\\\\maricopa-dwid-redesign\\\\placeholder.css\" -Confirm:$false)",
+      "WebFetch(domain:www.maricopadwid.org)"
+    ]
+  }
+}
