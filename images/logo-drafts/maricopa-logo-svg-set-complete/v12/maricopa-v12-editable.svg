@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision">
+  <title id="title">Maricopa Consolidated Domestic Water Improvement District — V12</title>
+  <desc id="desc">Modern wordmark with sand land above navy water in Mar, a classic tap, and blue icopa.</desc>
+  <defs>
+    <clipPath id="v12-land-clip" clipPathUnits="userSpaceOnUse">
+      <path d="M0 0h390v147c-35 1-75 0-130-2-80-3-170-4-260 1V0Z"/>
+    </clipPath>
+    <clipPath id="v12-water-clip" clipPathUnits="userSpaceOnUse">
+      <path d="M0 151c90-5 180-4 260-1 55 2 95 3 130 2v148H0Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- The duplicated editable text is clipped into land and water regions. -->
+  <text x="30" y="200" fill="#E3BA77" clip-path="url(#v12-land-clip)" font-family="'Century Gothic', CenturyGothic, sans-serif" font-size="180" font-weight="700">Mar</text>
+  <text x="30" y="200" fill="#0D1F3D" clip-path="url(#v12-water-clip)" font-family="'Century Gothic', CenturyGothic, sans-serif" font-size="180" font-weight="700">Mar</text>
+  <text x="410" y="200" fill="#2563A8" font-family="'Century Gothic', CenturyGothic, sans-serif" font-size="180" font-weight="700">icopa</text>
+
+  <!-- Classic valve-handle tap integrated with the r -->
+  <path fill="#0D1F3D" d="M329 78c3-13 14-21 27-21s24 8 27 21Z"/>
+  <rect x="351" y="34" width="10" height="28" rx="2" fill="#0D1F3D"/>
+  <rect x="323" y="27" width="66" height="10" rx="5" fill="#0D1F3D"/>
+  <circle cx="356" cy="32" r="12" fill="#0D1F3D"/>
+  <circle cx="323" cy="32" r="7" fill="#0D1F3D"/>
+  <circle cx="389" cy="32" r="7" fill="#0D1F3D"/>
+  <path fill="#0D1F3D" d="M340 78h70v14h-10v12h-12V92h-48Z"/>
+  <path fill="#2563A8" d="M399 103c-8 11-14 20-14 29a14 14 0 0 0 28 0c0-9-6-18-14-29Z"/>
+
+  <text x="30" y="270" fill="#5B6B82" font-family="'Century Gothic', CenturyGothic, sans-serif" font-size="36" font-weight="400">Consolidated Domestic Water Improvement District</text>
+</svg>

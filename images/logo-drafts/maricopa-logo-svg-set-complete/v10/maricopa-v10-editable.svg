@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision">
+  <title id="title">Maricopa Consolidated Domestic Water Improvement District — V10</title>
+  <desc id="desc">Modern navy wordmark with a minimal integrated spout and blue water drop.</desc>
+
+  <text x="30" y="200" fill="#0D1F3D" font-family="'Century Gothic', CenturyGothic, sans-serif" font-size="180" font-weight="700">Mar</text>
+  <text x="410" y="200" fill="#0D1F3D" font-family="'Century Gothic', CenturyGothic, sans-serif" font-size="180" font-weight="700">icopa</text>
+
+  <!-- Minimal engineered spout integrated with the r -->
+  <path fill="#0D1F3D" d="M340 78h70v14h-10v12h-12V92h-48Z"/>
+  <rect x="329" y="49" width="38" height="8" rx="4" fill="#2563A8"/>
+  <path fill="#2563A8" d="M399 103c-8 11-14 20-14 29a14 14 0 0 0 28 0c0-9-6-18-14-29Z"/>
+
+  <text x="30" y="270" fill="#5B6B82" font-family="'Century Gothic', CenturyGothic, sans-serif" font-size="36" font-weight="400">Consolidated Domestic Water Improvement District</text>
+</svg>
