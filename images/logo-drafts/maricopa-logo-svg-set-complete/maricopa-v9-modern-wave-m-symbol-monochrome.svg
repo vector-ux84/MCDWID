@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision">
+  <title id="title">Maricopa modern wave M symbol, monochrome</title>
+  <desc id="desc">A one-color circular M crossed by a water wave.</desc>
+  <defs>
+    <clipPath id="v9-mono-circle">
+      <circle cx="80" cy="80" r="68"/>
+    </clipPath>
+    <mask id="v9-mono-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="160" height="160">
+      <rect width="160" height="160" fill="#fff"/>
+      <path d="M45 91V43l35 35 35-35v48" fill="none" stroke="#000" stroke-width="14" stroke-linecap="butt" stroke-linejoin="miter"/>
+    </mask>
+  </defs>
+  <g fill="#0D1F3D" clip-path="url(#v9-mono-circle)">
+    <path d="M0 0h160v91c-30 17-52 17-80 7-28-10-50-10-80 6V0Z" mask="url(#v9-mono-cutout)"/>
+    <path d="M0 106c28-16 50-16 80-5 29 11 50 9 80-7l-6 26c-23 12-46 13-74 3-28-10-49-9-72 4Z"/>
+    <path d="M0 134c25-13 49-12 80-1 29 10 52 5 80-9v36H0Z"/>
+  </g>
+</svg>

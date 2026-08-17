@@ -8,6 +8,8 @@ Each concept includes:
 
 V6 and V7 are symbol-only concepts (no lockup) and each include a `*-symbol-monochrome.svg` single-color variant. Their viewBox is a 512×512 square, which fits the current `.brand-mark` header CSS as-is — unlike V1–V4's 140×170 symbols, which need a CSS adjustment first (see main feedback).
 
+V9 has the full set (`symbol`, `symbol-monochrome`, `lockup`, `lockup-outlined`) plus PNG preview renders alongside the SVG source — the PNGs aren't needed for production use, `preview.html` already covers that. Its symbol viewBox is a 160×160 square, so it also fits the header CSS as-is.
+
 ## Recommended website use
 
 Use the icon-only SVG beside live HTML text in the primary site header. This keeps the long department name readable and responsive.

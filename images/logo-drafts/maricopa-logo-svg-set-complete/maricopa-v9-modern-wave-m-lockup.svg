@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 160" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision">
+  <title id="title">Maricopa Consolidated Domestic Water Improvement District</title>
+  <desc id="desc">Horizontal logo with a modern circular M and water wave beside the district name.</desc>
+  <defs>
+    <clipPath id="v9-lockup-circle">
+      <circle cx="80" cy="80" r="68"/>
+    </clipPath>
+    <mask id="v9-lockup-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="160" height="160">
+      <rect width="160" height="160" fill="#fff"/>
+      <path d="M45 91V43l35 35 35-35v48" fill="none" stroke="#000" stroke-width="14" stroke-linecap="butt" stroke-linejoin="miter"/>
+    </mask>
+  </defs>
+
+  <g transform="translate(4)">
+    <path d="M0 0h160v91c-30 17-52 17-80 7-28-10-50-10-80 6V0Z" fill="#0D1F3D" clip-path="url(#v9-lockup-circle)" mask="url(#v9-lockup-cutout)"/>
+    <path d="M0 106c28-16 50-16 80-5 29 11 50 9 80-7l-6 26c-23 12-46 13-74 3-28-10-49-9-72 4Z" fill="#2563A8" clip-path="url(#v9-lockup-circle)"/>
+    <path d="M0 134c25-13 49-12 80-1 29 10 52 5 80-9v36H0Z" fill="#0D1F3D" clip-path="url(#v9-lockup-circle)"/>
+  </g>
+
+  <text x="180" y="74" fill="#0D1F3D" font-family="Arial, 'Helvetica Neue', sans-serif" font-size="50" font-weight="700" textLength="650" lengthAdjust="spacingAndGlyphs">Maricopa Consolidated</text>
+  <text x="182" y="113" fill="#5B6B82" font-family="Arial, 'Helvetica Neue', sans-serif" font-size="22" letter-spacing=".5" textLength="550" lengthAdjust="spacingAndGlyphs">Domestic Water Improvement District</text>
+</svg>
