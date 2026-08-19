@@ -312,6 +312,86 @@
     color: var(--muted);
     margin: -4px 0 18px;
   }
+
+  /* ---- editable meeting notes ---- */
+  .decision-field {
+    margin-top: 6px;
+    padding: 8px 10px;
+    border: 1px dashed var(--line);
+    border-radius: 5px;
+    background: var(--panel-2);
+    font-size: .87rem;
+    min-height: 1.6em;
+    cursor: text;
+    white-space: pre-wrap;
+  }
+  .decision-field:focus { outline: 2px solid var(--accent); outline-offset: 1px; background: var(--panel); }
+  .decision-field:empty:before { content: attr(data-placeholder); color: var(--muted); font-style: italic; }
+  .meeting-notes {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 20px 22px;
+    margin: 26px 0 40px;
+    box-shadow: var(--shadow);
+  }
+  .meeting-notes h2 { margin-bottom: 10px; }
+  .meeting-fields { display: flex; gap: 20px; flex-wrap: wrap; margin: 14px 0; }
+  .meeting-fields label, .meeting-notes > label {
+    font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); display: block; margin-bottom: 4px;
+  }
+  .meeting-field-input {
+    border: 1px dashed var(--line);
+    border-radius: 5px;
+    background: var(--panel-2);
+    padding: 7px 10px;
+    font-size: .9rem;
+    min-width: 220px;
+    min-height: 1.3em;
+  }
+  .meeting-field-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; background: var(--panel); }
+  .meeting-field-input:empty:before { content: attr(data-placeholder); color: var(--muted); font-style: italic; }
+  .notes-box {
+    border: 1px dashed var(--line);
+    border-radius: 6px;
+    background: var(--panel-2);
+    padding: 14px;
+    min-height: 120px;
+    font-size: .92rem;
+    white-space: pre-wrap;
+  }
+  .notes-box:focus { outline: 2px solid var(--accent); outline-offset: 1px; background: var(--panel); }
+  .notes-box:empty:before { content: attr(data-placeholder); color: var(--muted); font-style: italic; }
+  .meeting-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 16px;
+    box-shadow: var(--shadow);
+  }
+  .meeting-toolbar button {
+    font: inherit;
+    font-size: .82rem;
+    font-weight: 700;
+    border: 1px solid var(--accent);
+    background: var(--accent-bg);
+    color: var(--accent);
+    border-radius: 5px;
+    padding: 7px 13px;
+    cursor: pointer;
+  }
+  .meeting-toolbar button:hover { background: var(--accent); color: var(--panel); }
+  .meeting-toolbar button.danger { border-color: var(--danger-line); background: var(--danger-bg); color: var(--danger); }
+  .meeting-toolbar button.danger:hover { background: var(--danger); color: var(--panel); }
+  .save-status { font-size: .76rem; color: var(--muted); margin-left: auto; }
 </style>
 </head>
 <body>
@@ -332,6 +412,33 @@
       <div>Open questions<strong>14 raised &middot; 2 resolved</strong></div>
     </div>
   </div>
+
+  <section id="meeting-notes-section" class="meeting-notes" aria-label="Meeting notes">
+    <h2>Meeting Notes</h2>
+    <p class="export-hint" style="color:var(--muted); font-size:.85rem;">Type directly into the dashed boxes &mdash; the "Decision / notes" field under each kickoff-agenda item in §4, plus the general notes area below. Notes autosave to this browser as you type (safety net only). Before closing the tab, click <strong>Download updated document</strong> to save everything into a real <code>.html</code> file &mdash; that file is what becomes the starting point for the next version.</p>
+
+    <div class="meeting-fields">
+      <div>
+        <label for="mn-date">Meeting date</label>
+        <div class="meeting-field-input" id="mn-date" contenteditable="true" data-placeholder="2026-08-20"></div>
+      </div>
+      <div>
+        <label for="mn-attendees">Attendees</label>
+        <div class="meeting-field-input" id="mn-attendees" contenteditable="true" data-placeholder="Patrick, Adam Hazen, Justin Quinn, Sidney"></div>
+      </div>
+    </div>
+
+    <label for="mn-general">General notes</label>
+    <div class="notes-box" id="mn-general" contenteditable="true" data-placeholder="Anything that doesn't fit under a specific agenda item below…"></div>
+
+    <div class="meeting-toolbar">
+      <button type="button" id="mn-save">Save notes</button>
+      <button type="button" id="mn-download">Download updated document</button>
+      <button type="button" id="mn-copy">Copy notes as text</button>
+      <button type="button" id="mn-clear" class="danger">Clear all notes</button>
+      <span class="save-status" id="mn-status">Not saved yet</span>
+    </div>
+  </section>
 
   <section id="changelog" style="margin-top:28px;">
     <div class="section-num">v7</div>
@@ -446,26 +553,42 @@
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Vendor &amp; contract review</p>
     <ol class="plain">
-      <li>Evaluate the technology vendor stack &mdash; Streamline, GoDaddy, Microsoft 365, NexBillPay, SSL, document storage, IT support &mdash; what's included, renewal dates, and whether switching platforms (starting with Streamline) makes sense &mdash; see <a href="#pm-techaudit">&sect;5</a></li>
+      <li>Evaluate the technology vendor stack &mdash; Streamline, GoDaddy, Microsoft 365, NexBillPay, SSL, document storage, IT support &mdash; what's included, renewal dates, and whether switching platforms (starting with Streamline) makes sense &mdash; see <a href="#pm-techaudit">&sect;5</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
     </ol>
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">CMS &amp; platform</p>
     <ol class="plain">
-      <li>Confirm WordPress as the CMS direction, and agree to hold off on the conversion until the design and content/structure decisions below are locked &mdash; see <a href="#roadmap">&sect;12</a></li>
+      <li>Confirm WordPress as the CMS direction, and agree to hold off on the conversion until the design and content/structure decisions below are locked &mdash; see <a href="#roadmap">&sect;12</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
     </ol>
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Access &amp; logistics</p>
     <ol class="plain">
-      <li>Confirm timeline and any hard deadlines</li>
-      <li>Request GoDaddy login access</li>
-      <li>Request Streamline login access (still outstanding)</li>
+      <li>Confirm timeline and any hard deadlines
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Request GoDaddy login access
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Request Streamline login access (still outstanding)
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
     </ol>
 
     <h3>2. Aesthetics &mdash; color &amp; logo</h3>
     <ol class="plain">
-      <li>Logo direction &mdash; the logo will be redesigned; review concepts and confirm how large a change to pursue &mdash; see <a href="#pm-logo">Logo direction, above</a></li>
-      <li>Confirm the color palette &mdash; is the current direction final, or should another be reconsidered? &mdash; see <a href="#design">&sect;8</a></li>
-      <li>Keep the live site's tagline, or commit to the redesign's new positioning copy? &mdash; see <a href="#design">&sect;8</a></li>
+      <li>Logo direction &mdash; the logo will be redesigned; review concepts and confirm how large a change to pursue &mdash; see <a href="#pm-logo">Logo direction, above</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Confirm the color palette &mdash; is the current direction final, or should another be reconsidered? &mdash; see <a href="#design">&sect;8</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Keep the live site's tagline, or commit to the redesign's new positioning copy? &mdash; see <a href="#design">&sect;8</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
     </ol>
 
     <h3>3. Site content &amp; structure decisions</h3>
@@ -473,25 +596,47 @@
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Information architecture &amp; page structure</p>
     <ol class="plain">
-      <li>Confirm the proposed information architecture, or amend it &mdash; see <a href="#ia">&sect;11</a></li>
-      <li>Do Staff and Board need dedicated pages, or can both live on one About/Governance page? <span class="resolved-tag">Implemented 2026-08-18</span> &mdash; combined into <code>about.html</code>; see <a href="#changelog">changelog</a> and <a href="#governance">&sect;3</a></li>
-      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? <span class="resolved-tag">Implemented 2026-08-18</span> &mdash; combined into <code>services.html</code>; see <a href="#changelog">changelog</a> and <a href="#services">&sect;4</a></li>
-      <li>Should the service-area address lookup be made real, backed by an actual boundary dataset?</li>
+      <li>Confirm the proposed information architecture, or amend it &mdash; see <a href="#ia">&sect;11</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Do Staff and Board need dedicated pages, or can both live on one About/Governance page? <span class="resolved-tag">Implemented 2026-08-18</span> &mdash; combined into <code>about.html</code>; see <a href="#changelog">changelog</a> and <a href="#governance">&sect;3</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Confirmed as-is, or revisit?"></div>
+      </li>
+      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? <span class="resolved-tag">Implemented 2026-08-18</span> &mdash; combined into <code>services.html</code>; see <a href="#changelog">changelog</a> and <a href="#services">&sect;4</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Confirmed as-is, or revisit?"></div>
+      </li>
+      <li>Should the service-area address lookup be made real, backed by an actual boundary dataset?
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
     </ol>
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Content ownership &amp; gaps</p>
     <ol class="plain">
-      <li>Who owns supplying and approving current water-quality advisory content before launch? &mdash; see <a href="#quality">&sect;6</a></li>
-      <li>Should CCR reports stay organized by the three merged communities, or consolidate under one identity? &mdash; see <a href="#quality">&sect;6</a></li>
-      <li>Is the missing 2022 board-meeting archive year (and 2023 CCR gap) worth tracking down, or an accepted known gap?</li>
-      <li>Should notices auto-archive after a set period instead of accumulating indefinitely? &mdash; see <a href="#notices">&sect;7</a></li>
-      <li>Is the live site's account "Sign in" feature something residents actually use, or safe to drop? &mdash; see <a href="#data">&sect;9</a></li>
+      <li>Who owns supplying and approving current water-quality advisory content before launch? &mdash; see <a href="#quality">&sect;6</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Should CCR reports stay organized by the three merged communities, or consolidate under one identity? &mdash; see <a href="#quality">&sect;6</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Is the missing 2022 board-meeting archive year (and 2023 CCR gap) worth tracking down, or an accepted known gap?
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Should notices auto-archive after a set period instead of accumulating indefinitely? &mdash; see <a href="#notices">&sect;7</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Is the live site's account "Sign in" feature something residents actually use, or safe to drop? &mdash; see <a href="#data">&sect;9</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
     </ol>
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Data to verify</p>
     <ol class="plain">
-      <li>Confirm the correct Spanish-language phone number &mdash; see <a href="#data">&sect;9</a></li>
-      <li>Confirm which email domain is authoritative for service applications &mdash; see <a href="#data">&sect;9</a></li>
+      <li>Confirm the correct Spanish-language phone number &mdash; see <a href="#data">&sect;9</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
+      <li>Confirm which email domain is authoritative for service applications &mdash; see <a href="#data">&sect;9</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
+      </li>
     </ol>
   </section>
 
@@ -859,5 +1004,152 @@
   </footer>
 
 </div>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'mcdwid_meeting_notes_v7';
+
+  var dateField = document.getElementById('mn-date');
+  var namedFields = [
+    dateField,
+    document.getElementById('mn-attendees'),
+    document.getElementById('mn-general')
+  ];
+  var decisionFields = Array.prototype.slice.call(document.querySelectorAll('.decision-field'));
+  var allFields = namedFields.concat(decisionFields);
+
+  function fieldKey(el, idx) {
+    return el.id ? el.id : 'df-' + idx;
+  }
+
+  function setStatus(msg) {
+    var s = document.getElementById('mn-status');
+    if (s) s.textContent = msg;
+  }
+
+  function loadSaved() {
+    var raw = null;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    var data = {};
+    if (raw) {
+      try { data = JSON.parse(raw); } catch (e) { data = {}; }
+    }
+    allFields.forEach(function (el, idx) {
+      var key = fieldKey(el, idx);
+      if (data[key]) el.textContent = data[key];
+    });
+    if (!dateField.textContent.trim()) dateField.textContent = '2026-08-20';
+    setStatus(raw ? 'Loaded saved notes from this browser' : 'No saved notes yet — start typing');
+  }
+
+  var saveTimer = null;
+  function saveNow() {
+    var data = {};
+    allFields.forEach(function (el, idx) {
+      var key = fieldKey(el, idx);
+      var text = el.textContent.trim();
+      if (text) data[key] = text;
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      setStatus('Saved to this browser at ' + new Date().toLocaleTimeString());
+    } catch (e) {
+      setStatus('Could not autosave in this browser — use Download to save to a file');
+    }
+  }
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveNow, 500);
+  }
+
+  allFields.forEach(function (el) {
+    el.addEventListener('input', scheduleSave);
+  });
+
+  document.getElementById('mn-save').addEventListener('click', saveNow);
+
+  document.getElementById('mn-clear').addEventListener('click', function () {
+    if (!confirm('Clear all typed notes and decisions on this page? This cannot be undone.')) return;
+    allFields.forEach(function (el) { el.textContent = ''; });
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    dateField.textContent = '2026-08-20';
+    setStatus('Cleared');
+  });
+
+  document.getElementById('mn-download').addEventListener('click', function () {
+    saveNow();
+    var clone = document.documentElement.cloneNode(true);
+    var html = '<!doctype html>\n' + clone.outerHTML;
+    var blob = new Blob([html], { type: 'text/html' });
+    var url = URL.createObjectURL(blob);
+    var dateStr = (dateField.textContent || '').trim() || new Date().toISOString().slice(0, 10);
+    var safeDate = dateStr.replace(/[^0-9a-zA-Z-]/g, '');
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'mcdwid-meeting-notes-' + (safeDate || 'draft') + '.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+    setStatus('Downloaded at ' + new Date().toLocaleTimeString() + ' — check your Downloads folder');
+  });
+
+  document.getElementById('mn-copy').addEventListener('click', function () {
+    var lines = [];
+    lines.push('MCDWID Meeting Notes — ' + (dateField.textContent || '').trim());
+    lines.push('Attendees: ' + (document.getElementById('mn-attendees').textContent || '').trim());
+    lines.push('');
+    var general = document.getElementById('mn-general').textContent.trim();
+    if (general) {
+      lines.push('General notes:');
+      lines.push(general);
+      lines.push('');
+    }
+
+    var n = 0;
+    decisionFields.forEach(function (df) {
+      var text = df.textContent.trim();
+      if (!text) return;
+      n++;
+      var li = df.closest('li');
+      var question = '';
+      if (li) {
+        var liClone = li.cloneNode(true);
+        var innerDf = liClone.querySelector('.decision-field');
+        if (innerDf) innerDf.parentNode.removeChild(innerDf);
+        question = liClone.textContent.replace(/\s+/g, ' ').trim();
+      }
+      lines.push(n + '. ' + question);
+      lines.push('   Decision: ' + text);
+      lines.push('');
+    });
+
+    var summary = lines.join('\n');
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(summary).then(
+        function () { setStatus('Notes copied to clipboard'); },
+        function () { fallbackCopy(summary); setStatus('Notes copied to clipboard'); }
+      );
+    } else {
+      fallbackCopy(summary);
+      setStatus('Notes copied to clipboard');
+    }
+  });
+
+  loadSaved();
+})();
+</script>
 </body>
 </html>
