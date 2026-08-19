@@ -235,7 +235,6 @@
   }
   .step h3 { margin: 0 0 4px; font-size: 1rem; }
   .step p { margin: 0; font-size: .87rem; color: var(--muted); }
-  .step .status { margin-left: 8px; }
 
   footer.doc-footer {
     margin-top: 60px;
@@ -286,32 +285,6 @@
 
   .contact-block { font-size: .93rem; }
   .contact-block strong { color: var(--ink); }
-
-  /* ---- v7 additions: changelog section, resolved tags ---- */
-  .resolved-tag {
-    display: inline-block;
-    background: var(--good-bg);
-    color: var(--good);
-    border-radius: 99px;
-    padding: 1px 9px;
-    font-size: .72rem;
-    font-weight: 700;
-    margin-left: 6px;
-    white-space: nowrap;
-  }
-  .toc-changelog {
-    display: block;
-    font-weight: 700;
-    font-size: .88rem;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--line);
-  }
-  .version-note {
-    font-size: .8rem;
-    color: var(--muted);
-    margin: -4px 0 18px;
-  }
 </style>
 </head>
 <body>
@@ -319,50 +292,21 @@
 <div class="wrap">
 
   <div class="cover">
-    <div class="kicker">Living project reference &middot; v7 &middot; not for public distribution</div>
+    <div class="kicker">Living project reference &mdash; not for public distribution</div>
     <h1>MCDWID Website Redesign</h1>
     <p style="color:var(--muted); font-size:.95rem; margin-top:6px;">Combines the project management reference (stakeholders, communications, agenda, vendor audit) with the redesign audit comparing the live site at <a href="https://www.maricopadwid.org/" target="_blank" rel="noopener">maricopadwid.org</a> against the in-progress rebuild.</p>
     <div class="cover-meta">
-      <div>Last updated<strong>2026-08-18</strong></div>
-      <div>Version<strong>v7 (v6 archived)</strong></div>
+      <div>Last updated<strong>2026-08-17</strong></div>
       <div>Stakeholders<strong>4</strong></div>
       <div>Kickoff agenda items<strong>19</strong></div>
       <div>Live pages reviewed<strong>11</strong></div>
-      <div>Redesign pages built<strong>11</strong></div>
-      <div>Open questions<strong>14 raised &middot; 2 resolved</strong></div>
+      <div>Redesign pages built<strong>6</strong></div>
+      <div>Open questions<strong>14</strong></div>
     </div>
   </div>
 
-  <section id="changelog" style="margin-top:28px;">
-    <div class="section-num">v7</div>
-    <h2>What changed since v6</h2>
-    <p class="version-note">v6 is preserved at <code>docs/archive/mcdwid-combined-reference-v6.html</code> for reference. Everything below reflects a build session on 2026-08-18 that acted on two of the open questions from §10 — treat these as implemented talking points to confirm or revisit at the next meeting, not closed decisions.</p>
-
-    <div class="callout note">
-      <span class="label">Headline</span>
-      5 of the pages marked <span class="status missing">Missing</span> in v6's inventory (§02) are now built as structural placeholders: About &amp; Governance, Services, Rates &amp; Policies, Privacy Policy, and Accessibility Statement. Redesign page count moves from 6 to 11 (of ~17 live-site areas). Two long-open structural questions were acted on; the rest of §10 is untouched.
-    </div>
-
-    <h3 style="margin-top:22px;">Decisions implemented — confirm or revisit</h3>
-    <ol class="plain">
-      <li><strong>Staff + Board combined into one page.</strong> Built as <code>about.html</code> rather than two dedicated pages, matching what §11's proposed IA already assumed. See §03.</li>
-      <li><strong>The three service-application types combined into one page.</strong> Built as <code>services.html</code> with New Service / Construction / Hydrant as three sections, rather than three separate pages. See §04.</li>
-      <li><strong>Rates &amp; Policies, Privacy Policy, and Accessibility Statement built as their own pages</strong> (<code>rates.html</code>, <code>privacy.html</code>, <code>accessibility.html</code>) — no structural decision needed for these three, they were simply missing.</li>
-      <li><strong>Sitewide navigation and footer updated</strong> on every page (new and existing) to link to all 5 new pages, so they don't join <code>service-area.html</code>/<code>pay-bill.html</code> as built-but-orphaned. <code>index.html</code>'s three stale placeholder links ("Start Water Service," "Rates &amp; Policies," "Learn about the district") were repointed from their old contact.html/water-quality.html stand-ins to the real pages.</li>
-    </ol>
-
-    <h3>Still open — unchanged by this session</h3>
-    <ol class="plain">
-      <li><strong>Content, not structure, is the remaining gap.</strong> All 5 new pages are placeholder shells — no real staff names, board roster, service-application requirements, or rate figures have been added. The content-ownership questions in §10 (water-quality advisories, CCR organization, rates verification) are all still open.</li>
-      <li><strong><code>service-area.html</code> and <code>pay-bill.html</code> are still not in the primary nav</strong> — both remain reachable only via in-content links on the homepage. The "built but hard to find" gap from v6's executive summary is narrowed (5 fewer orphaned pages) but not fully closed for these two.</li>
-      <li><strong>The Global Water Resources subdivision-exclusion referral</strong> described in §04 still isn't represented in <code>services.html</code> — that's real content to add, not a structural change.</li>
-      <li><strong>No logo, palette, or tagline decisions were made</strong> in this session — §08 and the related items in §10 are unchanged.</li>
-    </ol>
-  </section>
-
   <div class="toc">
     <div class="toc-title">Contents</div>
-    <a class="toc-changelog" href="#changelog">&rarr; What changed since v6 (start here)</a>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 28px;">
       <div class="toc-group">
         <div class="toc-group-title">Part I &mdash; Project Management Reference</div>
@@ -474,8 +418,8 @@
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Information architecture &amp; page structure</p>
     <ol class="plain">
       <li>Confirm the proposed information architecture, or amend it &mdash; see <a href="#ia">&sect;11</a></li>
-      <li>Do Staff and Board need dedicated pages, or can both live on one About/Governance page? <span class="resolved-tag">Implemented 2026-08-18</span> &mdash; combined into <code>about.html</code>; see <a href="#changelog">changelog</a> and <a href="#governance">&sect;3</a></li>
-      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? <span class="resolved-tag">Implemented 2026-08-18</span> &mdash; combined into <code>services.html</code>; see <a href="#changelog">changelog</a> and <a href="#services">&sect;4</a></li>
+      <li>Do Staff and Board need dedicated pages, or can both live on one About/Governance page? &mdash; see <a href="#governance">&sect;3</a></li>
+      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? &mdash; see <a href="#services">&sect;4</a></li>
       <li>Should the service-area address lookup be made real, backed by an actual boundary dataset?</li>
     </ol>
 
@@ -550,16 +494,16 @@
 <section id="summary">
     <div class="section-num">01</div>
     <h2>Executive summary</h2>
-    <p>The live site is content-heavy and operationally real — board rosters, real fee schedules, active water-quality advisories, downloadable forms — but visually dated and spread across a flat, deep navigation menu. The redesign has a stronger visual foundation (a real design system, a chosen color direction, logo concepts in progress) but still holds a fraction of the live site's real content: <strong>11 pages exist against roughly 17 distinct pages/sections</strong> on the live site, up from 6 as of v6 — see <a href="#changelog">"What changed since v6"</a> above.</p>
-    <p>The gap is no longer primarily structural — it's that the real content itself (staff names, board roster, district history, itemized rates, active compliance notices, service-application requirements) still hasn't been brought into the redesign's now-built pages. Two pages, <code>service-area.html</code> and <code>pay-bill.html</code>, are built but still only reachable from in-content links on the homepage, not the primary nav.</p>
+    <p>The live site is content-heavy and operationally real — board rosters, real fee schedules, active water-quality advisories, downloadable forms — but visually dated and spread across a flat, deep navigation menu. The redesign has a stronger visual foundation (a real design system, a chosen color direction, logo concepts in progress) but currently holds a fraction of the live site's real content: 6 pages exist against roughly 17 distinct pages/sections on the live site.</p>
+    <p>The gap isn't primarily a design problem — it's that several real content areas (staff, board, history, itemized rates, active compliance notices, three separate service-application types) haven't been brought into the redesign yet. Two pages that <em>are</em> built (<code>service-area.html</code>, <code>pay-bill.html</code>) aren't linked from anywhere.</p>
     <div class="callout risk">
       <span class="label">Highest-priority item</span>
       The live water-quality page carries active health-relevant advisories (arsenic and nitrate exceedances, boil-water-style warnings for specific neighborhoods). This content changes over time and can't be treated as placeholder copy — it needs a defined process for who supplies and approves it before the redesign launches. See §6.
     </div>
-    <p>Recommendation: settle the site's remaining information architecture questions (§11) in this meeting — two of them (About/Governance and Services structure) were already acted on between v6 and v7; confirm those calls were right before content is written against them, since it's far cheaper to change now than after.</p>
+    <p>Recommendation: settle the site's information architecture (§11) in this meeting before building more pages — it determines how many templates the eventual WordPress build needs, and it's far cheaper to change now than after content is written.</p>
   </section>
 
-
+  
 
   <section id="inventory">
     <div class="section-num">02</div>
@@ -572,19 +516,19 @@
           <tr><td>Contact Us</td><td><code>/contact-us</code></td><td><span class="status partial">Placeholder</span> contact.html — real hours, deposit process, mailing address not yet in</td></tr>
           <tr><td>Pay Water Bill Now</td><td>Nexbillpay portal</td><td><span class="status present">Linked</span> — same external portal</td></tr>
           <tr><td>News &amp; Notices</td><td><code>/news-and-notices</code></td><td><span class="status partial">Placeholder</span> — meetings.html shows example content only</td></tr>
-          <tr><td>Staff</td><td><code>/staff</code></td><td><span class="status present">Built</span> about.html <span class="resolved-tag">Combined w/ Board, 08-18</span> — structure only, no staff directory content yet</td></tr>
-          <tr><td>History</td><td><code>/history</code></td><td><span class="status partial">One paragraph</span> on homepage §about, plus a stub link on about.html — no founding date/merger history migrated yet</td></tr>
-          <tr><td>Boards</td><td><code>/boards</code></td><td><span class="status present">Built</span> about.html <span class="resolved-tag">Combined w/ Staff, 08-18</span> — structure only, no board roster content yet</td></tr>
+          <tr><td>Staff</td><td><code>/staff</code></td><td><span class="status missing">Missing</span> — no equivalent page</td></tr>
+          <tr><td>History</td><td><code>/history</code></td><td><span class="status partial">One paragraph</span> on homepage §about, no founding date/merger history</td></tr>
+          <tr><td>Boards</td><td><code>/boards</code></td><td><span class="status missing">Missing</span> — no member roster anywhere</td></tr>
           <tr><td>Board Meetings</td><td><code>/mcdwid-board-meetings</code></td><td><span class="status partial">Placeholder</span> meetings.html — no real archive</td></tr>
-          <tr><td>New Service Request</td><td><code>/new-service-request</code></td><td><span class="status present">Built</span> services.html (section 1 of 3) <span class="resolved-tag">08-18</span> — structure only, no application requirements yet</td></tr>
-          <tr><td>Construction Application</td><td><code>/construction-forms</code></td><td><span class="status present">Built</span> services.html (section 2 of 3) <span class="resolved-tag">08-18</span></td></tr>
-          <tr><td>Hydrant Services</td><td><code>/hydrant-service</code></td><td><span class="status present">Built</span> services.html (section 3 of 3) <span class="resolved-tag">08-18</span></td></tr>
-          <tr><td>Area We Serve</td><td><code>/area-that-we-provide-service</code></td><td><span class="status present">Built</span> service-area.html — has a working (mock) address lookup, which the live page lacks entirely. Linked from the homepage; still not in the primary nav.</td></tr>
-          <tr><td>Rates &amp; Policies</td><td><code>/maricopa-cdwid-rates-policies</code></td><td><span class="status present">Built</span> rates.html <span class="resolved-tag">08-18</span> — structure only, fee schedule from §5 not yet transcribed in</td></tr>
+          <tr><td>New Service Request</td><td><code>/new-service-request</code></td><td><span class="status missing">Missing</span> — folded into generic "Start Service" link to contact.html</td></tr>
+          <tr><td>Construction Application</td><td><code>/construction-forms</code></td><td><span class="status missing">Missing</span></td></tr>
+          <tr><td>Hydrant Services</td><td><code>/hydrant-service</code></td><td><span class="status missing">Missing</span></td></tr>
+          <tr><td>Area We Serve</td><td><code>/area-that-we-provide-service</code></td><td><span class="status present">Built, unlinked</span> service-area.html — has a working (mock) address lookup, which the live page lacks entirely</td></tr>
+          <tr><td>Rates &amp; Policies</td><td><code>/maricopa-cdwid-rates-policies</code></td><td><span class="status missing">Missing</span> — no fee schedule anywhere in redesign</td></tr>
           <tr><td>Water Quality/CCR</td><td><code>/water-quality-ccr-reports</code></td><td><span class="status partial">Placeholder</span> water-quality.html — no reports, no active advisories</td></tr>
-          <tr><td>Pay bill notice</td><td>(homepage notice item)</td><td><span class="status present">Built</span> pay-bill.html — linked from the homepage; still not in the primary nav</td></tr>
-          <tr><td>Privacy Policy</td><td><code>/privacy-policy</code></td><td><span class="status present">Built</span> privacy.html <span class="resolved-tag">08-18</span> — placeholder legal copy, no actual policy text yet</td></tr>
-          <tr><td>Accessibility Statement</td><td><code>/accessibility.html</code></td><td><span class="status present">Built</span> accessibility.html <span class="resolved-tag">08-18</span> (footer link now points here instead of contact.html) — placeholder copy only</td></tr>
+          <tr><td>Pay bill notice</td><td>(homepage notice item)</td><td><span class="status present">Built, unlinked</span> pay-bill.html</td></tr>
+          <tr><td>Privacy Policy</td><td><code>/privacy-policy</code></td><td><span class="status missing">Missing</span></td></tr>
+          <tr><td>Accessibility Statement</td><td><code>/accessibility.html</code></td><td><span class="status missing">Missing</span> (footer link exists, points to contact.html)</td></tr>
         </tbody>
       </table>
     </div>
@@ -602,9 +546,9 @@
       <li>Board: 4 members, all current terms expiring <strong>2026</strong> — Lucia Rodriguez (Chairman), Debbie Chitwood (Vice Chairman), Julia Gusse, Odilia Saldana. Meets 2nd Tuesday, 4:00 PM, at the district office.</li>
       <li>Staff: 2 named people — Adam Hazen (Field Manager), Justin Quinn (Office Manager). Emergency operations and admin are handled through intergovernmental agreements with 4 other districts, not a large in-house team.</li>
     </ul>
-    <div class="callout rec">
-      <span class="label">Decision recorded &mdash; 2026-08-18</span>
-      Staff and Board were combined into a single "About &amp; Governance" page (<code>about.html</code>) rather than two dedicated pages, matching what §11's proposed IA already assumed. This is a structural decision only — none of the history, board roster, or staff-directory content above has been migrated into the built page yet. Flag at the next meeting if separate pages are actually preferred; it's a cheap reversal at this stage.
+    <div class="callout question">
+      <span class="label">Discuss as a group</span>
+      With a 2-person staff and a 4-member board, does a dedicated "Staff" page and a dedicated "Boards" page each earn their own nav slot, or should both live as sections on one "About / Governance" page? (Proposed IA in §11 assumes the latter — flag if that's wrong.)
     </div>
   </section>
 
@@ -622,14 +566,10 @@
         </tbody>
       </table>
     </div>
-    <p>Notably, the live site explicitly turns away subdivision developments (Rancho El Dorado, Villages, Tortosa, Senita) and redirects them to Global Water Resources at 866-940-1102 — that exclusion still isn't represented anywhere in the redesign, and it's exactly the kind of misdirected-inquiry problem the service-area lookup on <code>service-area.html</code> already exists to solve.</p>
+    <p>Notably, the live site explicitly turns away subdivision developments (Rancho El Dorado, Villages, Tortosa, Senita) and redirects them to Global Water Resources at 866-940-1102 — that exclusion isn't represented anywhere in the redesign yet, and it's exactly the kind of misdirected-inquiry problem the service-area lookup on <code>service-area.html</code> already exists to solve.</p>
     <div class="callout rec">
       <span class="label">Recommendation</span>
       The redesign's mock address-lookup tool on service-area.html is a genuine improvement over the live site (which only offers a static PDF of streets). Worth making that lookup real — and worth having it flag "not our service area" cases with the Global Water Resources referral, matching what the live site does today.
-    </div>
-    <div class="callout rec">
-      <span class="label">Decision recorded &mdash; 2026-08-18</span>
-      The three application types were combined into a single Services page (<code>services.html</code>) with three sections, rather than three separate pages. Structure only — the requirements table above and the Global Water Resources referral still need to be written into the built page.
     </div>
   </section>
 
@@ -659,7 +599,7 @@
         </tbody>
       </table>
     </div>
-    <p>A <code>rates.html</code> placeholder page now exists (built 2026-08-18, linked from nav and footer sitewide) but doesn't contain this table yet — it still needs to be transcribed in and verified against the district's own records before publishing.</p>
+    <p>None of this exists in the redesign yet — water-quality.html currently only links to a placeholder "Rates &amp; Policies" anchor.</p>
   </section>
 
   <section id="quality">
@@ -696,7 +636,6 @@
       <li><strong>Logo:</strong> still undecided. Multiple concepts exist (a water-droplet mark, a desert-horizon mark, an MC monogram, a canal-M mark, a Sonoran-flow mark, a modern-wave-M mark, and three wordmark-integrated concepts with a spout/valve/land-water motif built into the letters). None chosen yet — worth a decision before the WordPress build, since the header/favicon depend on it.</li>
       <li><strong>Visual maturity:</strong> the live site is functional but visually dated (2019-era municipal-CMS look, per Streamline). The redesign is a clear visual upgrade as far as it's built — the gap is content coverage, not design quality.</li>
     </ul>
-    <p style="color:var(--muted); font-size:.85rem;">Unchanged since v6 — no logo, palette, or tagline decisions were made in the 2026-08-18 build session (see <a href="#changelog">changelog</a>).</p>
   </section>
 
   <section id="data">
@@ -724,8 +663,8 @@
       <li>Keep the live site's tagline, or commit to the redesign's new positioning copy? (§8)</li>
       <li>Confirm the correct Spanish-language phone number — (520) 757-2976 or 752-2976. (§9)</li>
       <li>Which email domain is authoritative for service applications — mcdwells.org or maricopaconsolidated.org? (§9)</li>
-      <li>Do Staff and Boards need dedicated pages, or can both live inside one About/Governance page? (§3) <span class="resolved-tag">Implemented 2026-08-18</span> — built as one page (about.html); confirm or revisit.</li>
-      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? (§4) <span class="resolved-tag">Implemented 2026-08-18</span> — built as one page (services.html); confirm or revisit.</li>
+      <li>Do Staff and Boards need dedicated pages, or can both live inside one About/Governance page? (§3)</li>
+      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? (§4)</li>
       <li>Who owns supplying and approving current water-quality advisory content before launch? (§6)</li>
       <li>Should CCR reports stay organized by the three merged communities, or consolidate under one identity? (§6)</li>
       <li>Is the missing 2022 board-meeting archive year (and 2023 CCR gap) worth tracking down, or accepted as a known gap?</li>
@@ -739,10 +678,10 @@
   <section id="ia">
     <div class="section-num">11</div>
     <h2>Proposed information architecture</h2>
-    <p>Consolidates the live site's 17 pages into 8 top-level areas, folding low-volume content (Staff, History) into their parent sections rather than giving every live-site page a 1:1 match. Green-bordered nodes below are still not built; solid nodes are now real pages.</p>
+    <p>Consolidates the live site's 17 pages into 8 top-level areas, folding low-volume content (Staff, History) into their parent sections rather than giving every live-site page a 1:1 match. Green-bordered nodes are new relative to what's built today.</p>
     <div class="mapwrap">
       <figure>
-        <svg viewBox="0 0 860 380" role="img" aria-label="Proposed site structure: Home at the center connects to About with History Staff and Board as subsections, Services with Start Service Construction and Hydrant as subsections plus an upgraded Service Area lookup, Billing with Pay Bill and Rates and Policies, Water Quality and Compliance with CCR Reports and Current Advisories, News and Notices, and Contact. About, Services, and Rates and Policies are now built as of 2026-08-18; remaining new pages are marked.">
+        <svg viewBox="0 0 860 380" role="img" aria-label="Proposed site structure: Home at the center connects to About with History Staff and Board as subsections, Services with Start Service Construction and Hydrant as subsections plus an upgraded Service Area lookup, Billing with Pay Bill and Rates and Policies, Water Quality and Compliance with CCR Reports and Current Advisories, News and Notices, and Contact. New pages not yet built are marked.">
           <defs>
             <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
               <path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/>
@@ -786,7 +725,7 @@
 
           <!-- Billing subsections -->
           <g class="n" transform="translate(650,120)"><rect width="90" height="30" rx="3"/><text x="45" y="19" text-anchor="middle" style="font-size:10px">Pay bill</text></g>
-          <g class="n" transform="translate(750,120)"><rect width="100" height="30" rx="3"/><text x="50" y="19" text-anchor="middle" style="font-size:9.5px">Rates &amp; policies</text></g>
+          <g class="n new" transform="translate(750,120)"><rect width="100" height="30" rx="3"/><text x="50" y="19" text-anchor="middle" style="font-size:9.5px">Rates &amp; policies</text></g>
           <line class="edge" x1="670" y1="78" x2="695" y2="120" marker-end="url(#arr)"/>
           <line class="edge" x1="700" y1="78" x2="790" y2="120" marker-end="url(#arr)"/>
 
@@ -796,10 +735,10 @@
           <line class="edge" x1="680" y1="300" x2="750" y2="270" marker-end="url(#arr)"/>
           <line class="edge" x1="650" y1="300" x2="645" y2="270" marker-end="url(#arr)"/>
 
-          <text x="10" y="375" style="font-size:9.5px" fill="var(--good)">■ green border = still not built</text>
+          <text x="10" y="375" style="font-size:9.5px" fill="var(--good)">■ green border = not yet built</text>
         </svg>
       </figure>
-      <figcaption>As of 2026-08-18: About, Services, and Rates &amp; Policies (formerly green-bordered) are now built as real pages — <code>about.html</code>, <code>services.html</code>, <code>rates.html</code>. All three are structural placeholders; none of the content behind them has been written yet. Service-area.html already exists too and just needs its lookup made real and its nav link restored (marked with ↑). CCR reports and Current advisories (still green) remain genuinely new content to write inside water-quality.html.</figcaption>
+      <figcaption>service-area.html already exists and just needs its lookup made real and its nav link restored (marked with ↑); everything else marked green is genuinely new content to write.</figcaption>
     </div>
   </section>
 
@@ -809,27 +748,27 @@
     <div class="roadmap">
       <div class="step">
         <div class="num">1</div>
-        <div><h3>Resolve open questions in this meeting <span class="status partial">2 of 14 resolved</span></h3><p>Especially §10 items 1–3 (logo, palette, tagline) and 8–9 (water-quality content ownership, CCR organization) — these are the decisions that would force rework if made after building. Items 6–7 (About/Services page structure) were acted on 2026-08-18; confirm those calls or flag for revisit.</p></div>
+        <div><h3>Resolve open questions in this meeting</h3><p>Especially §10 items 1–3 (logo, palette, tagline) and 6–9 (page structure, water-quality content ownership) — these are the decisions that would force rework if made after building.</p></div>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <div><h3>Sign off on the proposed IA (§11), or amend it <span class="status partial">Partially validated</span></h3><p>This becomes the actual page/template list for the WordPress build later — get it right once. The About and Services consolidation decisions are now built against this IA; the rest (Billing/Water Quality grouping) still needs a formal sign-off.</p></div>
+        <div><h3>Sign off on the proposed IA (§11), or amend it</h3><p>This becomes the actual page/template list for the WordPress build later — get it right once.</p></div>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <div><h3>Collect real content for the gap areas <span class="status missing">Not started</span></h3><p>Priority order: current water-quality advisories (compliance-sensitive), rates table (verify against §5), board/staff roster, service-application requirements. All 5 pages built 2026-08-18 are still placeholder shells waiting on this step.</p></div>
+        <div><h3>Collect real content for the gap areas</h3><p>Priority order: current water-quality advisories (compliance-sensitive), rates table (verify against §5), board/staff roster, service-application requirements. Everything else can follow.</p></div>
       </div>
       <div class="step">
         <div class="num">4</div>
-        <div><h3>Finalize logo and confirm the color palette <span class="status missing">Not started</span></h3><p>Both are close to done — pick one of each so the header/favicon/brand assets stop being a moving target.</p></div>
+        <div><h3>Finalize logo and confirm the color palette</h3><p>Both are close to done — pick one of each so the header/favicon/brand assets stop being a moving target.</p></div>
       </div>
       <div class="step">
         <div class="num">5</div>
-        <div><h3>Build out the remaining pages against the signed-off IA <span class="status partial">5 of ~6 built</span></h3><p>About, Services, Rates &amp; Policies, Privacy, and Accessibility were built 2026-08-18 and wired into nav/footer sitewide. Still outstanding: link service-area.html and pay-bill.html into the <em>primary nav</em> (both remain homepage-only links), and populate real content across everything built so far.</p></div>
+        <div><h3>Build out the remaining pages against the signed-off IA</h3><p>Link service-area.html and pay-bill.html into navigation immediately — they're already built and currently unreachable.</p></div>
       </div>
       <div class="step">
         <div class="num">6</div>
-        <div><h3>Only then start the WordPress conversion <span class="status missing">Not started (intentionally deferred)</span></h3><p>Converting before the IA and design are settled means re-templating every time either changes. Once locked, the conversion itself is a well-understood, standard piece of work.</p></div>
+        <div><h3>Only then start the WordPress conversion</h3><p>Converting before the IA and design are settled means re-templating every time either changes. Once locked, the conversion itself is a well-understood, standard piece of work.</p></div>
       </div>
     </div>
   </section>
@@ -837,7 +776,7 @@
   <section id="sources">
     <div class="section-num">13</div>
     <h2>Sources</h2>
-    <p style="font-size:.82rem; color:var(--muted);">All live-site content above was pulled directly from maricopadwid.org on 2026-08-17 via automated page fetches, then cross-checked by hand where a figure appeared on more than one page (e.g. the Spanish-language phone number). Treat quoted figures as a faithful starting point, not a substitute for confirming against the district's own records before publishing. The page-inventory table (§02) was refreshed on 2026-08-18 against the redesign repository's actual file list; the live-site figures themselves were not re-pulled and remain as of 2026-08-17.</p>
+    <p style="font-size:.82rem; color:var(--muted);">All live-site content above was pulled directly from maricopadwid.org on 2026-08-17 via automated page fetches, then cross-checked by hand where a figure appeared on more than one page (e.g. the Spanish-language phone number). Treat quoted figures as a faithful starting point, not a substitute for confirming against the district's own records before publishing.</p>
     <ul class="plain" style="font-size:.8rem; color:var(--muted); columns:2;">
       <li><code>/</code></li>
       <li><code>/contact-us</code></li>
@@ -855,7 +794,7 @@
     </ul>
   </section>
   <footer class="doc-footer">
-    MCDWID Website Redesign &mdash; Project Reference &amp; Redesign Audit &mdash; v7. Part I prepared by Patrick from working notes; Part II prepared from the maricopa-dwid-redesign working repository and the live maricopadwid.org site (pulled 2026-08-17), with the page inventory and IA updated 2026-08-18 to reflect that session's build. v6 is archived at <code>docs/archive/mcdwid-combined-reference-v6.html</code>. Living document &mdash; update as the project progresses. For Patrick's reference only, not for public distribution.
+    MCDWID Website Redesign &mdash; Project Reference &amp; Redesign Audit. Part I prepared by Patrick from working notes; Part II prepared from the maricopa-dwid-redesign working repository and the live maricopadwid.org site (pulled 2026-08-17). Living document &mdash; update as the project progresses. For Patrick's reference only, not for public distribution.
   </footer>
 
 </div>
