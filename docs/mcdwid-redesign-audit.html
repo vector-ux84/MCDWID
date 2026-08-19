@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCDWID Website Redesign &mdash; Project Reference</title>
+<style>
+  :root {
+    --paper: #f7f8fb;
+    --panel: #ffffff;
+    --panel-2: #eef1f6;
+    --line: #d7dfec;
+    --ink: #16233a;
+    --muted: #5b6b82;
+    --accent: #2563a8;
+    --accent-bg: #e2ecf7;
+    --warm: #9a6416;
+    --warm-bg: #fbf1de;
+    --warm-line: #e0bd7c;
+    --danger: #a23b3b;
+    --danger-bg: #fbeaea;
+    --danger-line: #e3a9a9;
+    --good: #1f7a4d;
+    --good-bg: #e7f5ee;
+    --shadow: 0 1px 2px rgba(22,35,58,.06), 0 10px 28px rgba(22,35,58,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0d131c;
+      --panel: #131b27;
+      --panel-2: #0f151f;
+      --line: #223349;
+      --ink: #dde6ee;
+      --muted: #8ba0b6;
+      --accent: #5ba3e0;
+      --accent-bg: #17293c;
+      --warm: #e0b869;
+      --warm-bg: #2a2210;
+      --warm-line: #4a3c17;
+      --danger: #e08585;
+      --danger-bg: #2c1616;
+      --danger-line: #4a2323;
+      --good: #6fcb9c;
+      --good-bg: #12261c;
+      --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 28px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0d131c;
+    --panel: #131b27;
+    --panel-2: #0f151f;
+    --line: #223349;
+    --ink: #dde6ee;
+    --muted: #8ba0b6;
+    --accent: #5ba3e0;
+    --accent-bg: #17293c;
+    --warm: #e0b869;
+    --warm-bg: #2a2210;
+    --warm-line: #4a3c17;
+    --danger: #e08585;
+    --danger-bg: #2c1616;
+    --danger-line: #4a2323;
+    --good: #6fcb9c;
+    --good-bg: #12261c;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 28px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin-inline: auto; padding: 48px 24px 90px; }
+
+  h1, h2, h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--ink);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  h1 { font-size: 2rem; margin: 0 0 6px; }
+  h2 { font-size: 1.4rem; margin: 0 0 4px; }
+  h3 { font-size: 1.08rem; margin: 26px 0 8px; }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); }
+
+  /* ---- cover ---- */
+  .cover {
+    border-bottom: 3px double var(--line);
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+  }
+  .kicker {
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 26px;
+    margin-top: 16px;
+    font-size: .82rem;
+    color: var(--muted);
+  }
+  .cover-meta strong { color: var(--ink); display: block; font-size: .9rem; margin-top: 2px; }
+
+  /* ---- toc ---- */
+  .toc {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 16px 22px;
+    margin: 26px 0 40px;
+    box-shadow: var(--shadow);
+  }
+  .toc-title { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .toc ol { margin: 0; padding-left: 1.2em; columns: 2; column-gap: 28px; }
+  .toc li { margin-bottom: 6px; font-size: .88rem; break-inside: avoid; }
+  @media (max-width: 640px) { .toc ol { columns: 1; } }
+
+  section { margin-top: 46px; scroll-margin-top: 16px; }
+  .section-num {
+    display: inline-block;
+    font-family: Georgia, serif;
+    font-size: .78rem;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-bottom: 8px;
+    letter-spacing: .02em;
+  }
+
+  /* ---- callouts ---- */
+  .callout {
+    border-radius: 6px;
+    border: 1px solid;
+    padding: 13px 16px;
+    margin: 14px 0;
+    font-size: .88rem;
+  }
+  .callout .label {
+    display: block;
+    font-size: .68rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .callout.question { background: var(--warm-bg); border-color: var(--warm-line); }
+  .callout.question .label { color: var(--warm); }
+  .callout.risk { background: var(--danger-bg); border-color: var(--danger-line); }
+  .callout.risk .label { color: var(--danger); }
+  .callout.rec { background: var(--good-bg); border-color: var(--good); }
+  .callout.rec .label { color: var(--good); }
+
+  /* ---- tables ---- */
+  .tablewrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: .86rem; background: var(--panel); }
+  th, td { padding: 9px 13px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th {
+    background: var(--panel-2);
+    font-size: .68rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num, th.num { font-variant-numeric: tabular-nums; text-align: right; }
+  .status { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: .72rem; font-weight: 600; white-space: nowrap; }
+  .status.missing { background: var(--danger-bg); color: var(--danger); }
+  .status.partial { background: var(--warm-bg); color: var(--warm); }
+  .status.present { background: var(--good-bg); color: var(--good); }
+
+  /* ---- generic lists ---- */
+  ul.plain, ol.plain { margin: 10px 0; padding-left: 1.3em; }
+  ul.plain li, ol.plain li { margin-bottom: 6px; font-size: .93rem; }
+
+  code {
+    font-family: 'SF Mono', Consolas, 'Roboto Mono', monospace;
+    font-size: .84em;
+    background: var(--panel-2);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  .quote {
+    border-left: 3px solid var(--line);
+    padding-left: 14px;
+    margin: 12px 0;
+    color: var(--muted);
+    font-style: italic;
+    font-size: .9rem;
+  }
+
+  /* ---- sitemap diagram ---- */
+  .mapwrap { overflow-x: auto; margin: 18px 0; }
+  svg { display: block; width: 100%; height: auto; }
+  .n rect { fill: var(--panel); stroke: var(--line); stroke-width: 1.3; }
+  .n.hub rect { fill: var(--accent-bg); stroke: var(--accent); stroke-width: 2; }
+  .n.new rect { stroke: var(--good); stroke-width: 1.6; }
+  .n text { font-size: 11.5px; fill: var(--ink); font-weight: 600; }
+  .n .sub { font-size: 9px; fill: var(--muted); font-weight: 400; }
+  .edge { stroke: var(--muted); stroke-width: 1.3; fill: none; }
+  .lbl { font-size: 9.5px; fill: var(--muted); }
+  .new-badge { fill: var(--good); font-size: 8px; font-weight: 700; letter-spacing: .04em; }
+  figure { margin: 0; }
+  figcaption { font-size: .82rem; color: var(--muted); margin-top: 10px; }
+
+  /* ---- roadmap ---- */
+  .roadmap { display: grid; gap: 14px; margin: 16px 0; }
+  .step {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 14px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .step .num {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--accent-bg);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-family: Georgia, serif;
+    font-weight: 700;
+  }
+  .step h3 { margin: 0 0 4px; font-size: 1rem; }
+  .step p { margin: 0; font-size: .87rem; color: var(--muted); }
+
+  footer.doc-footer {
+    margin-top: 60px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: .76rem;
+    color: var(--muted);
+  }
+  footer.doc-footer a { color: var(--muted); }
+
+  /* ---- additions for combined PM + audit reference ---- */
+  .cover-meta { flex-wrap: wrap; row-gap: 10px; }
+  .cover-meta > div { margin-right: 26px; }
+  .cover-meta > div:last-child { margin-right: 0; }
+
+  .part-divider {
+    margin: 64px 0 30px;
+    padding-bottom: 14px;
+    border-bottom: 3px double var(--line);
+  }
+  .part-kicker {
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .part-divider h1 { font-size: 1.65rem; margin: 0 0 6px; }
+  .part-divider p { color: var(--muted); font-size: .92rem; margin: 0; }
+
+  .toc-group { margin-bottom: 20px; }
+  .toc-group:last-child { margin-bottom: 0; }
+  .toc-group-title {
+    font-weight: 700;
+    font-size: .8rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .callout.note { background: var(--accent-bg); border-color: var(--accent); }
+  .callout.note .label { color: var(--accent); }
+
+  ul.todo { list-style: none; padding-left: 0; }
+  ul.todo li { margin-bottom: 9px; font-size: .93rem; }
+  ul.todo li .box { display: inline-block; width: 1.1em; }
+
+  .contact-block { font-size: .93rem; }
+  .contact-block strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="cover">
+    <div class="kicker">Living project reference &mdash; not for public distribution</div>
+    <h1>MCDWID Website Redesign</h1>
+    <p style="color:var(--muted); font-size:.95rem; margin-top:6px;">Combines the project management reference (stakeholders, communications, agenda, vendor audit) with the redesign audit comparing the live site at <a href="https://www.maricopadwid.org/" target="_blank" rel="noopener">maricopadwid.org</a> against the in-progress rebuild.</p>
+    <div class="cover-meta">
+      <div>Last updated<strong>2026-08-17</strong></div>
+      <div>Stakeholders<strong>4</strong></div>
+      <div>Kickoff agenda items<strong>19</strong></div>
+      <div>Live pages reviewed<strong>11</strong></div>
+      <div>Redesign pages built<strong>6</strong></div>
+      <div>Open questions<strong>14</strong></div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 28px;">
+      <div class="toc-group">
+        <div class="toc-group-title">Part I &mdash; Project Management Reference</div>
+        <ol class="plain" style="margin:0;">
+          <li><a href="#pm-overview">Project overview</a></li>
+          <li><a href="#pm-stakeholders">Stakeholders</a></li>
+          <li><a href="#pm-comms">Communication plan</a></li>
+          <li><a href="#pm-agenda">Kickoff meeting agenda</a></li>
+          <li><a href="#pm-techaudit">Technology &amp; vendor audit</a></li>
+          <li><a href="#pm-logo">Logo direction</a></li>
+          <li><a href="#pm-tools">Tools &amp; resources reference</a></li>
+        </ol>
+      </div>
+      <div class="toc-group">
+        <div class="toc-group-title">Part II &mdash; Redesign Audit</div>
+        <ol class="plain" style="margin:0;">
+          <li><a href="#summary">Executive summary</a></li>
+          <li><a href="#inventory">Page inventory: live site vs. redesign</a></li>
+          <li><a href="#governance">Governance &amp; about content</a></li>
+          <li><a href="#services">Service applications</a></li>
+          <li><a href="#rates">Rates &amp; policies</a></li>
+          <li><a href="#quality">Water quality &amp; compliance</a></li>
+          <li><a href="#notices">News, notices &amp; meeting archive</a></li>
+          <li><a href="#design">Design &amp; branding status</a></li>
+          <li><a href="#data">Data points to verify</a></li>
+          <li><a href="#questions">All open questions for this meeting</a></li>
+          <li><a href="#ia">Proposed information architecture</a></li>
+          <li><a href="#roadmap">Recommended next steps</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="part-divider">
+    <div class="part-kicker">Part I</div>
+    <h1>Project Management Reference</h1>
+    <p>Stakeholders, communication plan, meeting agenda, and vendor audit for the MCDWID website redesign.</p>
+  </div>
+
+  <section id="pm-overview">
+    <div class="section-num">1</div>
+    <h2>Project overview</h2>
+    <p>Redesign of the Maricopa Consolidated Domestic Water Improvement District (MCDWID) website (maricopadwid.org). Scope includes: website redesign, logo redesign, document updates, and payment table updates. There are no hard deadlines set yet.</p>
+    <p>The site is currently being rebuilt in Visual Studio Code, with the direction to migrate to WordPress as the content management system.</p>
+  </section>
+
+  <section id="pm-stakeholders">
+    <div class="section-num">2</div>
+    <h2>Stakeholders</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Name</th><th>Role</th><th>Contact</th></tr></thead>
+        <tbody>
+          <tr><td>Patrick</td><td>Web Designer</td><td>&mdash;</td></tr>
+          <tr><td>Adam Hazen</td><td>Maintenance &amp; Operations Manager</td><td>520-752-7519<br>ahazen@mcdwells.org</td></tr>
+          <tr><td>Justin Quinn</td><td>Office / Account Manager</td><td>520-752-7516<br>jquinn@mcdwells.org</td></tr>
+          <tr><td>Sidney</td><td>Internal Liaison</td><td>&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="pm-comms">
+    <div class="section-num">3</div>
+    <h2>Communication plan</h2>
+    <ul class="plain">
+      <li>Weekly Zoom meetings &mdash; Thursday or Friday afternoons</li>
+      <li>Attendees: Patrick, Adam, Justin, Sidney</li>
+      <li>Written email recap sent by Patrick after each call (progress, decisions, next steps)</li>
+    </ul>
+  </section>
+
+  <section id="pm-agenda">
+    <div class="section-num">4</div>
+    <h2>Kickoff meeting agenda</h2>
+    <p>Organized as three main topics, roughly in order of dependency: get the technical foundation settled first, then lock the visual identity, then work through the (much larger) set of content and structure decisions. Every item from the working agenda and every open question the redesign audit surfaced in Part II is included below. Items link to fuller context where it exists.</p>
+
+    <h3>1. Backend &amp; technology</h3>
+    <p style="color:var(--muted); font-size:.88rem; margin-top:-6px;">Hosting, email, and the technology &amp; vendor audit.</p>
+
+    <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Vendor &amp; contract review</p>
+    <ol class="plain">
+      <li>Evaluate the technology vendor stack &mdash; Streamline, GoDaddy, Microsoft 365, NexBillPay, SSL, document storage, IT support &mdash; what's included, renewal dates, and whether switching platforms (starting with Streamline) makes sense &mdash; see <a href="#pm-techaudit">&sect;5</a></li>
+    </ol>
+
+    <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">CMS &amp; platform</p>
+    <ol class="plain">
+      <li>Confirm WordPress as the CMS direction, and agree to hold off on the conversion until the design and content/structure decisions below are locked &mdash; see <a href="#roadmap">&sect;12</a></li>
+    </ol>
+
+    <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Access &amp; logistics</p>
+    <ol class="plain">
+      <li>Confirm timeline and any hard deadlines</li>
+      <li>Request GoDaddy login access</li>
+      <li>Request Streamline login access (still outstanding)</li>
+    </ol>
+
+    <h3>2. Aesthetics &mdash; color &amp; logo</h3>
+    <ol class="plain">
+      <li>Logo direction &mdash; the logo will be redesigned; review concepts and confirm how large a change to pursue &mdash; see <a href="#pm-logo">Logo direction, above</a></li>
+      <li>Confirm the color palette &mdash; is the current direction final, or should another be reconsidered? &mdash; see <a href="#design">&sect;8</a></li>
+      <li>Keep the live site's tagline, or commit to the redesign's new positioning copy? &mdash; see <a href="#design">&sect;8</a></li>
+    </ol>
+
+    <h3>3. Site content &amp; structure decisions</h3>
+    <p style="color:var(--muted); font-size:.88rem; margin-top:-6px;">The largest piece &mdash; what pages exist, how they're organized, and who owns the content in them.</p>
+
+    <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Information architecture &amp; page structure</p>
+    <ol class="plain">
+      <li>Confirm the proposed information architecture, or amend it &mdash; see <a href="#ia">&sect;11</a></li>
+      <li>Do Staff and Board need dedicated pages, or can both live on one About/Governance page? &mdash; see <a href="#governance">&sect;3</a></li>
+      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? &mdash; see <a href="#services">&sect;4</a></li>
+      <li>Should the service-area address lookup be made real, backed by an actual boundary dataset?</li>
+    </ol>
+
+    <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Content ownership &amp; gaps</p>
+    <ol class="plain">
+      <li>Who owns supplying and approving current water-quality advisory content before launch? &mdash; see <a href="#quality">&sect;6</a></li>
+      <li>Should CCR reports stay organized by the three merged communities, or consolidate under one identity? &mdash; see <a href="#quality">&sect;6</a></li>
+      <li>Is the missing 2022 board-meeting archive year (and 2023 CCR gap) worth tracking down, or an accepted known gap?</li>
+      <li>Should notices auto-archive after a set period instead of accumulating indefinitely? &mdash; see <a href="#notices">&sect;7</a></li>
+      <li>Is the live site's account "Sign in" feature something residents actually use, or safe to drop? &mdash; see <a href="#data">&sect;9</a></li>
+    </ol>
+
+    <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Data to verify</p>
+    <ol class="plain">
+      <li>Confirm the correct Spanish-language phone number &mdash; see <a href="#data">&sect;9</a></li>
+      <li>Confirm which email domain is authoritative for service applications &mdash; see <a href="#data">&sect;9</a></li>
+    </ol>
+  </section>
+
+  <section id="pm-techaudit">
+    <div class="section-num">5</div>
+    <h2>Technology &amp; vendor audit</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Vendor</th><th>Function</th><th>Status / Findings</th></tr></thead>
+        <tbody>
+          <tr><td>Streamline</td><td>Website hosting + CMS</td><td>Proprietary platform ("Streamline Web"), not open-source. Renewal date TBD. Access credentials requested but not yet received.</td></tr>
+          <tr><td>GoDaddy</td><td>Domain registration / DNS</td><td>Confirmed via MX Toolbox as DNS host for mcdwells.org. Login access needed.</td></tr>
+          <tr><td>Microsoft 365</td><td>Email hosting</td><td>Confirmed via MX Toolbox (mail routes through mail.protection.outlook.com). Fully independent of Streamline &mdash; safe to change hosting without affecting email.</td></tr>
+          <tr><td>NexBillPay</td><td>Bill payment processing</td><td>Separate from Streamline. Fee structure not yet confirmed.</td></tr>
+          <tr><td>SSL Certificate</td><td>Site security</td><td>Unknown if bundled with hosting or separate &mdash; to confirm.</td></tr>
+          <tr><td>Document storage</td><td>Board minutes, financials, etc.</td><td>Possibly SharePoint via M365 &mdash; to confirm.</td></tr>
+          <tr><td>IT support</td><td>General tech support</td><td>Unknown if a contract exists &mdash; to confirm.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="pm-logo">
+    <div class="section-num">6</div>
+    <h2>Logo direction</h2>
+    <p>The current logo will be redesigned as part of this project.</p>
+    <p>Open question for Adam &amp; Justin: how large a change to pursue, from a light modernization to a full rebrand.</p>
+    <div class="callout note">
+      <span class="label">Status</span>
+      Logo concepts are ready for review: <a href="file:///C:/Users/patri/Desktop/Maricopa%20Water%20Project%20Management/Logo%20concept%20preview.html">C:\Users\patri\Desktop\Maricopa Water Project Management\Logo concept preview.html</a>. These will be presented to Adam and Justin at the kickoff meeting. Part II's design section has the fuller inventory of concepts explored so far in the VS Code build &mdash; see <a href="#design">&sect;8, Design &amp; branding status</a>.
+    </div>
+  </section>
+
+  <section id="pm-tools">
+    <div class="section-num">7</div>
+    <h2>Tools &amp; resources reference</h2>
+    <ul class="plain">
+      <li>Development: Visual Studio Code + Claude Code</li>
+      <li>Current platform: Streamline (hosting/CMS)</li>
+      <li>Bill payment: NexBillPay</li>
+      <li>DNS/domain: GoDaddy</li>
+      <li>Email: Microsoft 365 / Outlook</li>
+      <li>Target CMS: WordPress</li>
+      <li>Design ideation: ChatGPT / Gemini image generation</li>
+      <li>DNS/email lookup verification: MX Toolbox (mxtoolbox.com)</li>
+      <li>WordPress learning: Zac Gordon's Complete WordPress Theme and Plugin Development Course (Udemy)</li>
+    </ul>
+  </section>
+
+  <div class="part-divider">
+    <div class="part-kicker">Part II</div>
+    <h1>Redesign Audit</h1>
+    <p>A side-by-side review of the live site against the in-progress redesign, prepared for the board / planning meeting, plus a proposed information architecture and next steps.</p>
+  </div>
+
+<section id="summary">
+    <div class="section-num">01</div>
+    <h2>Executive summary</h2>
+    <p>The live site is content-heavy and operationally real — board rosters, real fee schedules, active water-quality advisories, downloadable forms — but visually dated and spread across a flat, deep navigation menu. The redesign has a stronger visual foundation (a real design system, a chosen color direction, logo concepts in progress) but currently holds a fraction of the live site's real content: 6 pages exist against roughly 17 distinct pages/sections on the live site.</p>
+    <p>The gap isn't primarily a design problem — it's that several real content areas (staff, board, history, itemized rates, active compliance notices, three separate service-application types) haven't been brought into the redesign yet. Two pages that <em>are</em> built (<code>service-area.html</code>, <code>pay-bill.html</code>) aren't linked from anywhere.</p>
+    <div class="callout risk">
+      <span class="label">Highest-priority item</span>
+      The live water-quality page carries active health-relevant advisories (arsenic and nitrate exceedances, boil-water-style warnings for specific neighborhoods). This content changes over time and can't be treated as placeholder copy — it needs a defined process for who supplies and approves it before the redesign launches. See §6.
+    </div>
+    <p>Recommendation: settle the site's information architecture (§11) in this meeting before building more pages — it determines how many templates the eventual WordPress build needs, and it's far cheaper to change now than after content is written.</p>
+  </section>
+
+  
+
+  <section id="inventory">
+    <div class="section-num">02</div>
+    <h2>Page inventory: live site vs. redesign</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Live site page</th><th>URL</th><th>Redesign status</th></tr></thead>
+        <tbody>
+          <tr><td>Home</td><td><code>/</code></td><td><span class="status present">Built</span> index.html</td></tr>
+          <tr><td>Contact Us</td><td><code>/contact-us</code></td><td><span class="status partial">Placeholder</span> contact.html — real hours, deposit process, mailing address not yet in</td></tr>
+          <tr><td>Pay Water Bill Now</td><td>Nexbillpay portal</td><td><span class="status present">Linked</span> — same external portal</td></tr>
+          <tr><td>News &amp; Notices</td><td><code>/news-and-notices</code></td><td><span class="status partial">Placeholder</span> — meetings.html shows example content only</td></tr>
+          <tr><td>Staff</td><td><code>/staff</code></td><td><span class="status missing">Missing</span> — no equivalent page</td></tr>
+          <tr><td>History</td><td><code>/history</code></td><td><span class="status partial">One paragraph</span> on homepage §about, no founding date/merger history</td></tr>
+          <tr><td>Boards</td><td><code>/boards</code></td><td><span class="status missing">Missing</span> — no member roster anywhere</td></tr>
+          <tr><td>Board Meetings</td><td><code>/mcdwid-board-meetings</code></td><td><span class="status partial">Placeholder</span> meetings.html — no real archive</td></tr>
+          <tr><td>New Service Request</td><td><code>/new-service-request</code></td><td><span class="status missing">Missing</span> — folded into generic "Start Service" link to contact.html</td></tr>
+          <tr><td>Construction Application</td><td><code>/construction-forms</code></td><td><span class="status missing">Missing</span></td></tr>
+          <tr><td>Hydrant Services</td><td><code>/hydrant-service</code></td><td><span class="status missing">Missing</span></td></tr>
+          <tr><td>Area We Serve</td><td><code>/area-that-we-provide-service</code></td><td><span class="status present">Built, unlinked</span> service-area.html — has a working (mock) address lookup, which the live page lacks entirely</td></tr>
+          <tr><td>Rates &amp; Policies</td><td><code>/maricopa-cdwid-rates-policies</code></td><td><span class="status missing">Missing</span> — no fee schedule anywhere in redesign</td></tr>
+          <tr><td>Water Quality/CCR</td><td><code>/water-quality-ccr-reports</code></td><td><span class="status partial">Placeholder</span> water-quality.html — no reports, no active advisories</td></tr>
+          <tr><td>Pay bill notice</td><td>(homepage notice item)</td><td><span class="status present">Built, unlinked</span> pay-bill.html</td></tr>
+          <tr><td>Privacy Policy</td><td><code>/privacy-policy</code></td><td><span class="status missing">Missing</span></td></tr>
+          <tr><td>Accessibility Statement</td><td><code>/accessibility.html</code></td><td><span class="status missing">Missing</span> (footer link exists, points to contact.html)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="governance">
+    <div class="section-num">03</div>
+    <h2>Governance &amp; about content</h2>
+    <p>The live site carries real institutional history the redesign doesn't have yet:</p>
+    <ul class="plain">
+      <li>District formed <strong>July 21, 1986</strong> by the Pinal County Board of Supervisors, to acquire the area's sole private water utility.</li>
+      <li>Designated a <strong>Colonia</strong> in February 1998 (federal underserved-community designation, often tied to infrastructure funding eligibility).</li>
+      <li><strong>November 2017</strong>: merged with New Saddleback Vista DWID — this merger is where "Consolidated" enters the name.</li>
+      <li><strong>November 2020</strong>: Valle Escondido DWID merged in after a district election.</li>
+      <li>Board: 4 members, all current terms expiring <strong>2026</strong> — Lucia Rodriguez (Chairman), Debbie Chitwood (Vice Chairman), Julia Gusse, Odilia Saldana. Meets 2nd Tuesday, 4:00 PM, at the district office.</li>
+      <li>Staff: 2 named people — Adam Hazen (Field Manager), Justin Quinn (Office Manager). Emergency operations and admin are handled through intergovernmental agreements with 4 other districts, not a large in-house team.</li>
+    </ul>
+    <div class="callout question">
+      <span class="label">Discuss as a group</span>
+      With a 2-person staff and a 4-member board, does a dedicated "Staff" page and a dedicated "Boards" page each earn their own nav slot, or should both live as sections on one "About / Governance" page? (Proposed IA in §11 assumes the latter — flag if that's wrong.)
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-num">04</div>
+    <h2>Service applications</h2>
+    <p>The live site splits service requests into three distinct application types, each with its own downloadable PDF and near-identical process (photo ID + deposit, submitted by email or in person, account activated "usually next day"):</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Application type</th><th>Extra requirement beyond photo ID + deposit</th><th>Form on file</th></tr></thead>
+        <tbody>
+          <tr><td>New Service Request</td><td>Renter/owner documentation</td><td>Customer New Service (PDF, dated 05-13-2026)</td></tr>
+          <tr><td>Construction / Development</td><td>Project point of contact, site map, start/completion dates</td><td>Construction Meter Agreement 2026; Development &amp; Constr. Permit Application 2026</td></tr>
+          <tr><td>Hydrant Service</td><td>Same as construction (contact, map, dates)</td><td>Hydrant Meter Agreement (updated 2025-07-17)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Notably, the live site explicitly turns away subdivision developments (Rancho El Dorado, Villages, Tortosa, Senita) and redirects them to Global Water Resources at 866-940-1102 — that exclusion isn't represented anywhere in the redesign yet, and it's exactly the kind of misdirected-inquiry problem the service-area lookup on <code>service-area.html</code> already exists to solve.</p>
+    <div class="callout rec">
+      <span class="label">Recommendation</span>
+      The redesign's mock address-lookup tool on service-area.html is a genuine improvement over the live site (which only offers a static PDF of streets). Worth making that lookup real — and worth having it flag "not our service area" cases with the Global Water Resources referral, matching what the live site does today.
+    </div>
+  </section>
+
+  <section id="rates">
+    <div class="section-num">05</div>
+    <h2>Rates &amp; policies</h2>
+    <p>Effective 7/31/25, per the live site. Reproduced here for the meeting — <strong>treat as a starting point, not a final source</strong> (see §9).</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Item</th><th class="num">Amount</th></tr></thead>
+        <tbody>
+          <tr><td>Residential, 3/4" meter, in-district</td><td class="num">$36.90/mo</td></tr>
+          <tr><td>Residential, 3/4" meter, out-of-district</td><td class="num">$118.05/mo</td></tr>
+          <tr><td>Commercial, in-district (range by meter size)</td><td class="num">$46.75–$265.65/mo</td></tr>
+          <tr><td>Commercial, out-of-district</td><td class="num">2× in-district rate</td></tr>
+          <tr><td>Commodity rate, 0–3,000 gal</td><td class="num">$3.30 / 1,000 gal</td></tr>
+          <tr><td>Commodity rate, 3,001+ gal</td><td class="num">$3.85 / 1,000 gal</td></tr>
+          <tr><td>Bulk water</td><td class="num">$6.26 / 1,000 gal</td></tr>
+          <tr><td>Bulk water, IGA rate (no base rate)</td><td class="num">$4.26 / 1,000 gal</td></tr>
+          <tr><td>Service deposit</td><td class="num">$150 ($20 non-refundable)</td></tr>
+          <tr><td>Reconnection fee (delinquent)</td><td class="num">$55</td></tr>
+          <tr><td>Meter reinstall fee</td><td class="num">$200</td></tr>
+          <tr><td>Construction meter rental</td><td class="num">$1,500 + $1,250 deposit</td></tr>
+          <tr><td>Plan review / inspection (≤30 hrs)</td><td class="num">$3,500</td></tr>
+          <tr><td>New commercial connection</td><td class="num">$9,502.52 / net site area</td></tr>
+          <tr><td>New single-family connection</td><td class="num">$2,111.67 / water service</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>None of this exists in the redesign yet — water-quality.html currently only links to a placeholder "Rates &amp; Policies" anchor.</p>
+  </section>
+
+  <section id="quality">
+    <div class="section-num">06</div>
+    <h2>Water quality &amp; compliance</h2>
+    <div class="callout risk">
+      <span class="label">Compliance risk</span>
+      The live site currently lists active drinking-water advisories: an arsenic/nitrate exceedance notice, a Valle Escondido water disclosure (Nov 2025), and a Saddleback Vista drinking-water warning (2025). Water quality advisories are regulated communications — the redesign cannot launch with placeholder copy in this section, and whoever owns compliance at the district needs to be the one supplying current text, not this redesign process.
+    </div>
+    <p>Reports on file by community, per the live site: New Saddleback Vista (2025, 2024), Maricopa Consolidated (2025, 2024, 2022 — <strong>2023 appears absent from their own archive</strong>), Valle Escondido (2025, 2024, 2021, 2019). The live site also gives practical nitrate guidance (reverse-osmosis filtration, $75–$500 typical cost) and notes only 3 years of reports are kept on hand at the office.</p>
+    <div class="callout question">
+      <span class="label">Discuss as a group</span>
+      Should the new site organize CCR reports by community (mirroring the three merged districts) the way the live site does, or consolidate under one "Maricopa Consolidated" identity now that the merger is several years settled?
+    </div>
+  </section>
+
+  <section id="notices">
+    <div class="section-num">07</div>
+    <h2>News, notices &amp; meeting archive</h2>
+    <p>The live site's notice list mixes genuinely current items with stale ones — a "new office location" announcement from <strong>October 2019</strong> is still listed as news, alongside a 2023 fraud-sampler warning and a 2021 "current projects" notice. There's no visible archiving or date-based cutoff.</p>
+    <p>The board meeting archive is organized by year (2026, 2025, 2024, 2023, 2021 — <strong>2022 is missing</strong>) and mixes file formats inconsistently: most agendas/minutes are PDF, but at least one set of February 2026 minutes is a <strong>TIFF image</strong> — not text-searchable, not accessible to screen readers.</p>
+    <div class="callout rec">
+      <span class="label">Recommendation</span>
+      Two easy wins the redesign can offer over the live site: (1) a real "archived" state for notices past a certain age instead of leaving them in the active feed indefinitely, and (2) a house rule that meeting minutes/agendas are PDF only, never scanned image formats like TIFF.
+    </div>
+  </section>
+
+  <section id="design">
+    <div class="section-num">08</div>
+    <h2>Design &amp; branding status</h2>
+    <ul class="plain">
+      <li><strong>Live site tagline:</strong> "Committed to Providing Clean, Safe Water for All Our Residents." <strong>Redesign homepage copy:</strong> "Water service made simpler for our community." These read as two different positioning ideas — worth an explicit decision rather than letting it default.</li>
+      <li><strong>Color scheme:</strong> the redesign's <code>master</code> branch currently uses the "Corporate Blue" palette (steel blue on deep navy), chosen from five alternatives built during this process. Four other palettes exist on branches if the direction should be revisited.</li>
+      <li><strong>Logo:</strong> still undecided. Multiple concepts exist (a water-droplet mark, a desert-horizon mark, an MC monogram, a canal-M mark, a Sonoran-flow mark, a modern-wave-M mark, and three wordmark-integrated concepts with a spout/valve/land-water motif built into the letters). None chosen yet — worth a decision before the WordPress build, since the header/favicon depend on it.</li>
+      <li><strong>Visual maturity:</strong> the live site is functional but visually dated (2019-era municipal-CMS look, per Streamline). The redesign is a clear visual upgrade as far as it's built — the gap is content coverage, not design quality.</li>
+    </ul>
+  </section>
+
+  <section id="data">
+    <div class="section-num">09</div>
+    <h2>Data points to verify before launch</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Item</th><th>Live site</th><th>Redesign</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Spanish-language phone line</td><td>(520) 757-2976</td><td>(520) 752-2976</td><td>Confirmed twice on the live site (homepage + contact page) — the redesign's number looks like a transposition of the emergency line's last four digits (752-7517). Worth a direct call to confirm before fixing.</td></tr>
+          <tr><td>Service-request email</td><td>Office@MaricopaConsolidated.org</td><td>mcdoffice@mcdwells.org (only address used)</td><td>Live site uses <em>two different domains</em> for email depending on the page — worth asking the district which is authoritative rather than guessing.</td></tr>
+          <tr><td>Facebook presence</td><td>Linked in header</td><td>Not present</td><td>Simple addition if desired.</td></tr>
+          <tr><td>Account portal ("Sign in")</td><td>Present (Streamline CMS)</td><td>Not present</td><td>Unclear if this is used by residents in practice or a leftover platform feature — worth asking whether it's needed in the redesign.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="questions">
+    <div class="section-num">10</div>
+    <h2>All open questions for this meeting</h2>
+    <ol class="plain">
+      <li>Which logo concept should move forward to production? (§8)</li>
+      <li>Is the current "Corporate Blue" color direction final, or should another palette be reconsidered? (§8)</li>
+      <li>Keep the live site's tagline, or commit to the redesign's new positioning copy? (§8)</li>
+      <li>Confirm the correct Spanish-language phone number — (520) 757-2976 or 752-2976. (§9)</li>
+      <li>Which email domain is authoritative for service applications — mcdwells.org or maricopaconsolidated.org? (§9)</li>
+      <li>Do Staff and Boards need dedicated pages, or can both live inside one About/Governance page? (§3)</li>
+      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? (§4)</li>
+      <li>Who owns supplying and approving current water-quality advisory content before launch? (§6)</li>
+      <li>Should CCR reports stay organized by the three merged communities, or consolidate under one identity? (§6)</li>
+      <li>Is the missing 2022 board-meeting archive year (and 2023 CCR gap) worth tracking down, or accepted as a known gap?</li>
+      <li>Should notices auto-archive after a set period instead of accumulating indefinitely? (§7)</li>
+      <li>Is the live site's account "Sign in" feature something residents actually use, or safe to drop? (§9)</li>
+      <li>Should service-area.html's address lookup be made real (backed by an actual boundary dataset) rather than the current keyword-match placeholder?</li>
+      <li>Timing: agree to hold off on the WordPress conversion until this IA and the logo/color decisions are locked, to avoid re-templating work? (§12)</li>
+    </ol>
+  </section>
+
+  <section id="ia">
+    <div class="section-num">11</div>
+    <h2>Proposed information architecture</h2>
+    <p>Consolidates the live site's 17 pages into 8 top-level areas, folding low-volume content (Staff, History) into their parent sections rather than giving every live-site page a 1:1 match. Green-bordered nodes are new relative to what's built today.</p>
+    <div class="mapwrap">
+      <figure>
+        <svg viewBox="0 0 860 380" role="img" aria-label="Proposed site structure: Home at the center connects to About with History Staff and Board as subsections, Services with Start Service Construction and Hydrant as subsections plus an upgraded Service Area lookup, Billing with Pay Bill and Rates and Policies, Water Quality and Compliance with CCR Reports and Current Advisories, News and Notices, and Contact. New pages not yet built are marked.">
+          <defs>
+            <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/>
+            </marker>
+          </defs>
+
+          <!-- hub -->
+          <g class="n hub" transform="translate(365,170)"><rect width="130" height="40" rx="4"/><text x="65" y="25" text-anchor="middle">Home</text></g>
+
+          <!-- top-level -->
+          <g class="n" transform="translate(70,40)"><rect width="120" height="38" rx="4"/><text x="60" y="24" text-anchor="middle">About</text></g>
+          <g class="n" transform="translate(70,300)"><rect width="120" height="38" rx="4"/><text x="60" y="24" text-anchor="middle">Services</text></g>
+          <g class="n" transform="translate(620,40)"><rect width="130" height="38" rx="4"/><text x="65" y="24" text-anchor="middle">Billing</text></g>
+          <g class="n" transform="translate(610,300)"><rect width="150" height="38" rx="4"/><text x="75" y="17" text-anchor="middle">Water Quality</text><text class="sub" x="75" y="29" text-anchor="middle">&amp; Compliance</text></g>
+          <g class="n" transform="translate(370,10)"><rect width="120" height="34" rx="4"/><text x="60" y="21" text-anchor="middle">Contact</text></g>
+          <g class="n" transform="translate(370,336)"><rect width="140" height="34" rx="4"/><text x="70" y="21" text-anchor="middle">News &amp; Notices</text></g>
+
+          <!-- edges hub -> top level -->
+          <line class="edge" x1="375" y1="172" x2="190" y2="76" marker-end="url(#arr)"/>
+          <line class="edge" x1="375" y1="208" x2="190" y2="300" marker-end="url(#arr)"/>
+          <line class="edge" x1="485" y1="172" x2="620" y2="78" marker-end="url(#arr)"/>
+          <line class="edge" x1="485" y1="208" x2="610" y2="300" marker-end="url(#arr)"/>
+          <line class="edge" x1="430" y1="170" x2="430" y2="44" marker-end="url(#arr)"/>
+          <line class="edge" x1="430" y1="210" x2="440" y2="336" marker-end="url(#arr)"/>
+
+          <!-- About subsections -->
+          <g class="n" transform="translate(10,120)"><rect width="90" height="30" rx="3"/><text x="45" y="19" text-anchor="middle" style="font-size:10px">History</text></g>
+          <g class="n" transform="translate(110,120)"><rect width="90" height="30" rx="3"/><text x="45" y="19" text-anchor="middle" style="font-size:10px">Staff</text></g>
+          <g class="n" transform="translate(60,155)"><rect width="90" height="30" rx="3"/><text x="45" y="19" text-anchor="middle" style="font-size:10px">Board</text></g>
+          <line class="edge" x1="80" y1="78" x2="55" y2="120" marker-end="url(#arr)"/>
+          <line class="edge" x1="120" y1="78" x2="150" y2="120" marker-end="url(#arr)"/>
+          <line class="edge" x1="110" y1="78" x2="100" y2="155" marker-end="url(#arr)"/>
+
+          <!-- Services subsections -->
+          <g class="n" transform="translate(10,240)"><rect width="100" height="30" rx="3"/><text x="50" y="19" text-anchor="middle" style="font-size:10px">Start service</text></g>
+          <g class="n" transform="translate(115,240)"><rect width="105" height="30" rx="3"/><text x="52" y="19" text-anchor="middle" style="font-size:10px">Construction</text></g>
+          <g class="n new" transform="translate(60,205)"><rect width="100" height="30" rx="3"/><text x="50" y="19" text-anchor="middle" style="font-size:9.5px">Service area ↑</text></g>
+          <line class="edge" x1="100" y1="300" x2="60" y2="270" marker-end="url(#arr)"/>
+          <line class="edge" x1="140" y1="300" x2="160" y2="270" marker-end="url(#arr)"/>
+          <line class="edge" x1="120" y1="300" x2="110" y2="235" marker-end="url(#arr)"/>
+
+          <!-- Billing subsections -->
+          <g class="n" transform="translate(650,120)"><rect width="90" height="30" rx="3"/><text x="45" y="19" text-anchor="middle" style="font-size:10px">Pay bill</text></g>
+          <g class="n new" transform="translate(750,120)"><rect width="100" height="30" rx="3"/><text x="50" y="19" text-anchor="middle" style="font-size:9.5px">Rates &amp; policies</text></g>
+          <line class="edge" x1="670" y1="78" x2="695" y2="120" marker-end="url(#arr)"/>
+          <line class="edge" x1="700" y1="78" x2="790" y2="120" marker-end="url(#arr)"/>
+
+          <!-- Water quality subsections -->
+          <g class="n new" transform="translate(700,240)"><rect width="100" height="30" rx="3"/><text x="50" y="19" text-anchor="middle" style="font-size:9.5px">CCR reports</text></g>
+          <g class="n new" transform="translate(600,240)"><rect width="90" height="30" rx="3"/><text x="45" y="12" text-anchor="middle" style="font-size:9px">Current</text><text x="45" y="24" text-anchor="middle" style="font-size:9px">advisories</text></g>
+          <line class="edge" x1="680" y1="300" x2="750" y2="270" marker-end="url(#arr)"/>
+          <line class="edge" x1="650" y1="300" x2="645" y2="270" marker-end="url(#arr)"/>
+
+          <text x="10" y="375" style="font-size:9.5px" fill="var(--good)">■ green border = not yet built</text>
+        </svg>
+      </figure>
+      <figcaption>service-area.html already exists and just needs its lookup made real and its nav link restored (marked with ↑); everything else marked green is genuinely new content to write.</figcaption>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="section-num">12</div>
+    <h2>Recommended next steps</h2>
+    <div class="roadmap">
+      <div class="step">
+        <div class="num">1</div>
+        <div><h3>Resolve open questions in this meeting</h3><p>Especially §10 items 1–3 (logo, palette, tagline) and 6–9 (page structure, water-quality content ownership) — these are the decisions that would force rework if made after building.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div><h3>Sign off on the proposed IA (§11), or amend it</h3><p>This becomes the actual page/template list for the WordPress build later — get it right once.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div><h3>Collect real content for the gap areas</h3><p>Priority order: current water-quality advisories (compliance-sensitive), rates table (verify against §5), board/staff roster, service-application requirements. Everything else can follow.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div><h3>Finalize logo and confirm the color palette</h3><p>Both are close to done — pick one of each so the header/favicon/brand assets stop being a moving target.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">5</div>
+        <div><h3>Build out the remaining pages against the signed-off IA</h3><p>Link service-area.html and pay-bill.html into navigation immediately — they're already built and currently unreachable.</p></div>
+      </div>
+      <div class="step">
+        <div class="num">6</div>
+        <div><h3>Only then start the WordPress conversion</h3><p>Converting before the IA and design are settled means re-templating every time either changes. Once locked, the conversion itself is a well-understood, standard piece of work.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="section-num">13</div>
+    <h2>Sources</h2>
+    <p style="font-size:.82rem; color:var(--muted);">All live-site content above was pulled directly from maricopadwid.org on 2026-08-17 via automated page fetches, then cross-checked by hand where a figure appeared on more than one page (e.g. the Spanish-language phone number). Treat quoted figures as a faithful starting point, not a substitute for confirming against the district's own records before publishing.</p>
+    <ul class="plain" style="font-size:.8rem; color:var(--muted); columns:2;">
+      <li><code>/</code></li>
+      <li><code>/contact-us</code></li>
+      <li><code>/news-and-notices</code></li>
+      <li><code>/staff</code></li>
+      <li><code>/history</code></li>
+      <li><code>/boards</code></li>
+      <li><code>/mcdwid-board-meetings</code></li>
+      <li><code>/new-service-request</code></li>
+      <li><code>/hydrant-service</code></li>
+      <li><code>/construction-forms</code></li>
+      <li><code>/area-that-we-provide-service</code></li>
+      <li><code>/maricopa-cdwid-rates-policies</code></li>
+      <li><code>/water-quality-ccr-reports</code></li>
+    </ul>
+  </section>
+  <footer class="doc-footer">
+    MCDWID Website Redesign &mdash; Project Reference &amp; Redesign Audit. Part I prepared by Patrick from working notes; Part II prepared from the maricopa-dwid-redesign working repository and the live maricopadwid.org site (pulled 2026-08-17). Living document &mdash; update as the project progresses. For Patrick's reference only, not for public distribution.
+  </footer>
+
+</div>
+</body>
+</html>
