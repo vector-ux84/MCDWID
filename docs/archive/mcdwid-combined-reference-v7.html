@@ -399,17 +399,17 @@
 <div class="wrap">
 
   <div class="cover">
-    <div class="kicker">Living project reference &middot; v8 &middot; not for public distribution</div>
+    <div class="kicker">Living project reference &middot; v7 &middot; not for public distribution</div>
     <h1>MCDWID Website Redesign</h1>
     <p style="color:var(--muted); font-size:.95rem; margin-top:6px;">Combines the project management reference (stakeholders, communications, agenda, vendor audit) with the redesign audit comparing the live site at <a href="https://www.maricopadwid.org/" target="_blank" rel="noopener">maricopadwid.org</a> against the in-progress rebuild.</p>
     <div class="cover-meta">
-      <div>Last updated<strong>2026-08-20</strong></div>
-      <div>Version<strong>v8 (v7 archived)</strong></div>
+      <div>Last updated<strong>2026-08-18</strong></div>
+      <div>Version<strong>v7 (v6 archived)</strong></div>
       <div>Stakeholders<strong>4</strong></div>
       <div>Kickoff agenda items<strong>19</strong></div>
       <div>Live pages reviewed<strong>11</strong></div>
       <div>Redesign pages built<strong>11</strong></div>
-      <div>Open questions<strong>14 raised &middot; 9 resolved</strong></div>
+      <div>Open questions<strong>14 raised &middot; 2 resolved</strong></div>
     </div>
   </div>
 
@@ -420,7 +420,7 @@
     <div class="meeting-fields">
       <div>
         <label for="mn-date">Meeting date</label>
-        <div class="meeting-field-input" id="mn-date" contenteditable="true" data-placeholder="2026-08-27"></div>
+        <div class="meeting-field-input" id="mn-date" contenteditable="true" data-placeholder="2026-08-20"></div>
       </div>
       <div>
         <label for="mn-attendees">Attendees</label>
@@ -441,45 +441,35 @@
   </section>
 
   <section id="changelog" style="margin-top:28px;">
-    <div class="section-num">v8</div>
-    <h2>What changed since v7</h2>
-    <p class="version-note">v7 is preserved at <code>docs/archive/mcdwid-combined-reference-v7.html</code> for reference. Everything below reflects the 2026-08-20 meeting (Patrick, Adam, Justin, Sidney) — most of the open-questions list from v7's §10 got a real answer. Nothing here is a code/build change; it's decisions recorded for the next build session.</p>
+    <div class="section-num">v7</div>
+    <h2>What changed since v6</h2>
+    <p class="version-note">v6 is preserved at <code>docs/archive/mcdwid-combined-reference-v6.html</code> for reference. Everything below reflects a build session on 2026-08-18 that acted on two of the open questions from §10 — treat these as implemented talking points to confirm or revisit at the next meeting, not closed decisions.</p>
 
     <div class="callout note">
       <span class="label">Headline</span>
-      7 of the 14 open questions from v7 got a decision this meeting (2 were already resolved as of v7, for 9 of 14 resolved total). Remaining open: the IA sign-off itself, the 2022 board-archive/2023 CCR gap, and whether to make the service-area lookup real against an actual boundary dataset — the district will supply that boundary map, so this is now unblocked once it arrives.
+      5 of the pages marked <span class="status missing">Missing</span> in v6's inventory (§02) are now built as structural placeholders: About &amp; Governance, Services, Rates &amp; Policies, Privacy Policy, and Accessibility Statement. Redesign page count moves from 6 to 11 (of ~17 live-site areas). Two long-open structural questions were acted on; the rest of §10 is untouched.
     </div>
 
-    <h3 style="margin-top:22px;">Decisions recorded — 2026-08-20</h3>
+    <h3 style="margin-top:22px;">Decisions implemented — confirm or revisit</h3>
     <ol class="plain">
-      <li><strong>Vendor access:</strong> the district (not the vendor) will supply Streamline credentials directly. Microsoft 365 supplies the email domain; <code>@mcdwells.org</code> is confirmed as the only domain to use going forward. The SSL certificate may be sourced from a separate company from hosting — still needs a follow-up to identify who. See §5.</li>
-      <li><strong>CMS:</strong> staff is comfortable with the current CMS (Streamline) — this is a signal to weigh against the standing WordPress direction, not yet a reversal of it. Also check what CMS options exist under the district's own GoDaddy account. See §pm-overview and §12.</li>
-      <li><strong>GoDaddy and Streamline access:</strong> both still outstanding; follow up with Justin on each.</li>
-      <li><strong>Logo:</strong> redesign needs board sign-off before it's final. Action: send the team the current logo concepts for review ahead of that. See §6.</li>
-      <li><strong>Color palette:</strong> "Corporate Blue" (referred to informally as navy) is the direction to confirm with the team — treat as pending final confirmation, not yet fully locked. See §8.</li>
-      <li><strong>Tagline:</strong> team is open to suggestions; no live-site-vs-redesign decision made yet, but the redesign's current draft ("Water service made simpler for our community.") was raised in the meeting without objection. See §8.</li>
-      <li><strong>Service-area lookup:</strong> the district will provide an actual physical boundary map, which unblocks turning the current keyword-match placeholder into a real lookup. See §11.</li>
-      <li><strong>Water-quality content ownership:</strong> Sidney is the point of contact and will supply the document set for CCRs and current advisories (also settles the CCR-organization question — follow Sidney's document structure rather than deciding independently). See §6.</li>
-      <li><strong>2022 board-archive / 2023 CCR gap:</strong> raised with the district; still theirs to decide whether it's worth tracking down.</li>
-      <li><strong>Notice retention policy set:</strong> 3 years required live on the website; all years kept as hardcopy in the office; anything older than 3 years moves to an archive folder. Auto-archiving on the site itself is optional, not required. See §7.</li>
-      <li><strong>Account "Sign in" feature:</strong> confirmed not needed — may go away entirely if the district moves off Streamline. See §9.</li>
-      <li><strong>Spanish-language phone number confirmed:</strong> (520) 757-2976 is correct; the redesign's (520) 752-2976 was a transposition and needs fixing in contact.html/footer. See §9.</li>
-      <li><strong>Email domain confirmed:</strong> <code>@mcdwells.org</code> is authoritative; no other domain (including maricopaconsolidated.org) should be used. See §9.</li>
-      <li><strong>Facebook link:</strong> do not carry over the live site's Facebook link as-is — leave a placeholder for social links until the district's Facebook page itself gets redesigned/refreshed.</li>
+      <li><strong>Staff + Board combined into one page.</strong> Built as <code>about.html</code> rather than two dedicated pages, matching what §11's proposed IA already assumed. See §03.</li>
+      <li><strong>The three service-application types combined into one page.</strong> Built as <code>services.html</code> with New Service / Construction / Hydrant as three sections, rather than three separate pages. See §04.</li>
+      <li><strong>Rates &amp; Policies, Privacy Policy, and Accessibility Statement built as their own pages</strong> (<code>rates.html</code>, <code>privacy.html</code>, <code>accessibility.html</code>) — no structural decision needed for these three, they were simply missing.</li>
+      <li><strong>Sitewide navigation and footer updated</strong> on every page (new and existing) to link to all 5 new pages, so they don't join <code>service-area.html</code>/<code>pay-bill.html</code> as built-but-orphaned. <code>index.html</code>'s three stale placeholder links ("Start Water Service," "Rates &amp; Policies," "Learn about the district") were repointed from their old contact.html/water-quality.html stand-ins to the real pages.</li>
     </ol>
 
-    <h3>Still open</h3>
+    <h3>Still open — unchanged by this session</h3>
     <ol class="plain">
-      <li><strong>Formal IA sign-off (§11)</strong> is still outstanding — About/Services consolidation and now the service-area lookup direction are validated, but the full 8-area structure hasn't been explicitly confirmed as final.</li>
-      <li><strong>Content is still the largest remaining gap</strong> — no real staff names, board roster, rate figures, or service-application requirements have been written into the built placeholder pages yet.</li>
-      <li><strong><code>service-area.html</code> and <code>pay-bill.html</code></strong> are still reachable only from homepage content links, not the primary nav.</li>
-      <li><strong>The Global Water Resources subdivision-exclusion referral</strong> (§04) still isn't represented in <code>services.html</code>.</li>
+      <li><strong>Content, not structure, is the remaining gap.</strong> All 5 new pages are placeholder shells — no real staff names, board roster, service-application requirements, or rate figures have been added. The content-ownership questions in §10 (water-quality advisories, CCR organization, rates verification) are all still open.</li>
+      <li><strong><code>service-area.html</code> and <code>pay-bill.html</code> are still not in the primary nav</strong> — both remain reachable only via in-content links on the homepage. The "built but hard to find" gap from v6's executive summary is narrowed (5 fewer orphaned pages) but not fully closed for these two.</li>
+      <li><strong>The Global Water Resources subdivision-exclusion referral</strong> described in §04 still isn't represented in <code>services.html</code> — that's real content to add, not a structural change.</li>
+      <li><strong>No logo, palette, or tagline decisions were made</strong> in this session — §08 and the related items in §10 are unchanged.</li>
     </ol>
   </section>
 
   <div class="toc">
     <div class="toc-title">Contents</div>
-    <a class="toc-changelog" href="#changelog">&rarr; What changed since v7 (start here)</a>
+    <a class="toc-changelog" href="#changelog">&rarr; What changed since v6 (start here)</a>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 28px;">
       <div class="toc-group">
         <div class="toc-group-title">Part I &mdash; Project Management Reference</div>
@@ -563,41 +553,41 @@
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Vendor &amp; contract review</p>
     <ol class="plain">
-      <li>Evaluate the technology vendor stack &mdash; Streamline, GoDaddy, Microsoft 365, NexBillPay, SSL, document storage, IT support &mdash; what's included, renewal dates, and whether switching platforms (starting with Streamline) makes sense &mdash; see <a href="#pm-techaudit">&sect;5</a> <span class="resolved-tag">Decided 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">DWID will supply Streamline credentials directly. MS365 supplies the email domain; @mcdwells.org is the only domain to use going forward. SSL cert may come from a separate vendor from hosting &mdash; follow up on who.</div>
+      <li>Evaluate the technology vendor stack &mdash; Streamline, GoDaddy, Microsoft 365, NexBillPay, SSL, document storage, IT support &mdash; what's included, renewal dates, and whether switching platforms (starting with Streamline) makes sense &mdash; see <a href="#pm-techaudit">&sect;5</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
     </ol>
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">CMS &amp; platform</p>
     <ol class="plain">
-      <li>Confirm WordPress as the CMS direction, and agree to hold off on the conversion until the design and content/structure decisions below are locked &mdash; see <a href="#roadmap">&sect;12</a> <span class="resolved-tag">Discussed 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Staff is comfortable with the current CMS (Streamline) &mdash; a signal against the standing WordPress direction, not a reversal of it. Also check what CMS options exist under the district's own GoDaddy account.</div>
+      <li>Confirm WordPress as the CMS direction, and agree to hold off on the conversion until the design and content/structure decisions below are locked &mdash; see <a href="#roadmap">&sect;12</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
     </ol>
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Access &amp; logistics</p>
     <ol class="plain">
-      <li>Confirm timeline and any hard deadlines <span class="resolved-tag">Confirmed 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">None.</div>
+      <li>Confirm timeline and any hard deadlines
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
       <li>Request GoDaddy login access
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Still outstanding &mdash; follow up with Justin.</div>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
       <li>Request Streamline login access (still outstanding)
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Still outstanding &mdash; follow up with Justin.</div>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
     </ol>
 
     <h3>2. Aesthetics &mdash; color &amp; logo</h3>
     <ol class="plain">
       <li>Logo direction &mdash; the logo will be redesigned; review concepts and confirm how large a change to pursue &mdash; see <a href="#pm-logo">Logo direction, above</a>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Logo redesign needs to be confirmed by the board. Action: send the team the current logo concepts for review.</div>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
       <li>Confirm the color palette &mdash; is the current direction final, or should another be reconsidered? &mdash; see <a href="#design">&sect;8</a>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Confirm the navy/"Corporate Blue" palette with the team &mdash; pending final confirmation, not yet fully locked.</div>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
       <li>Keep the live site's tagline, or commit to the redesign's new positioning copy? &mdash; see <a href="#design">&sect;8</a>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Team is open to suggestions. The redesign's current draft, "Water service made simpler for our community," was raised without objection but not formally adopted.</div>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
     </ol>
 
@@ -607,45 +597,45 @@
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Information architecture &amp; page structure</p>
     <ol class="plain">
       <li>Confirm the proposed information architecture, or amend it &mdash; see <a href="#ia">&sect;11</a>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Not formally signed off yet &mdash; still outstanding.</div>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
       <li>Do Staff and Board need dedicated pages, or can both live on one About/Governance page? <span class="resolved-tag">Implemented 2026-08-18</span> &mdash; combined into <code>about.html</code>; see <a href="#changelog">changelog</a> and <a href="#governance">&sect;3</a>
-        <div class="decision-field" contenteditable="true" data-placeholder="Confirmed as-is, or revisit?">Confirmed 2026-08-20 &mdash; live on the combined page.</div>
+        <div class="decision-field" contenteditable="true" data-placeholder="Confirmed as-is, or revisit?"></div>
       </li>
       <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? <span class="resolved-tag">Implemented 2026-08-18</span> &mdash; combined into <code>services.html</code>; see <a href="#changelog">changelog</a> and <a href="#services">&sect;4</a>
-        <div class="decision-field" contenteditable="true" data-placeholder="Confirmed as-is, or revisit?">Confirmed 2026-08-20 &mdash; combine into one page.</div>
+        <div class="decision-field" contenteditable="true" data-placeholder="Confirmed as-is, or revisit?"></div>
       </li>
-      <li>Should the service-area address lookup be made real, backed by an actual boundary dataset? <span class="resolved-tag">Decided 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Yes &mdash; the district will provide a physical boundary map to build the real lookup against.</div>
+      <li>Should the service-area address lookup be made real, backed by an actual boundary dataset?
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
     </ol>
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Content ownership &amp; gaps</p>
     <ol class="plain">
-      <li>Who owns supplying and approving current water-quality advisory content before launch? &mdash; see <a href="#quality">&sect;6</a> <span class="resolved-tag">Decided 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Sidney is the contact &mdash; will provide the document set for the CCRs and advisory docs.</div>
+      <li>Who owns supplying and approving current water-quality advisory content before launch? &mdash; see <a href="#quality">&sect;6</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
-      <li>Should CCR reports stay organized by the three merged communities, or consolidate under one identity? &mdash; see <a href="#quality">&sect;6</a> <span class="resolved-tag">Decided 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Follows from the above &mdash; organize per Sidney's document set rather than deciding independently.</div>
+      <li>Should CCR reports stay organized by the three merged communities, or consolidate under one identity? &mdash; see <a href="#quality">&sect;6</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
-      <li>Is the missing 2022 board-meeting archive year (and 2023 CCR gap) worth tracking down, or an accepted known gap? <span class="resolved-tag">Raised 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Called out at the meeting &mdash; still the district's call.</div>
+      <li>Is the missing 2022 board-meeting archive year (and 2023 CCR gap) worth tracking down, or an accepted known gap?
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
-      <li>Should notices auto-archive after a set period instead of accumulating indefinitely? &mdash; see <a href="#notices">&sect;7</a> <span class="resolved-tag">Decided 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Auto-archiving is optional. Requirement: 3 years must stay live on the website; all years kept as hardcopy in the office; anything older than 3 years moves to an archive folder.</div>
+      <li>Should notices auto-archive after a set period instead of accumulating indefinitely? &mdash; see <a href="#notices">&sect;7</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
-      <li>Is the live site's account "Sign in" feature something residents actually use, or safe to drop? &mdash; see <a href="#data">&sect;9</a> <span class="resolved-tag">Decided 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">Not needed. Might go away entirely if the district moves off Streamline.</div>
+      <li>Is the live site's account "Sign in" feature something residents actually use, or safe to drop? &mdash; see <a href="#data">&sect;9</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
     </ol>
 
     <p style="font-weight:600; font-size:.88rem; margin-bottom:4px;">Data to verify</p>
     <ol class="plain">
-      <li>Confirm the correct Spanish-language phone number &mdash; see <a href="#data">&sect;9</a> <span class="resolved-tag">Confirmed 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">(520) 757-2976 confirmed as correct.</div>
+      <li>Confirm the correct Spanish-language phone number &mdash; see <a href="#data">&sect;9</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
-      <li>Confirm which email domain is authoritative for service applications &mdash; see <a href="#data">&sect;9</a> <span class="resolved-tag">Confirmed 2026-08-20</span>
-        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…">@mcdwells.org only &mdash; no other domain is valid.</div>
+      <li>Confirm which email domain is authoritative for service applications &mdash; see <a href="#data">&sect;9</a>
+        <div class="decision-field" contenteditable="true" data-placeholder="Decision / notes…"></div>
       </li>
     </ol>
   </section>
@@ -657,11 +647,11 @@
       <table>
         <thead><tr><th>Vendor</th><th>Function</th><th>Status / Findings</th></tr></thead>
         <tbody>
-          <tr><td>Streamline</td><td>Website hosting + CMS</td><td>Proprietary platform ("Streamline Web"), not open-source. Renewal date TBD. <span class="resolved-tag">2026-08-20</span> The district will supply access credentials directly. Staff reports being comfortable with the current CMS &mdash; weigh against the standing WordPress direction.</td></tr>
-          <tr><td>GoDaddy</td><td>Domain registration / DNS</td><td>Confirmed via MX Toolbox as DNS host for mcdwells.org. Login access still outstanding &mdash; follow up with Justin. Also worth checking what CMS options exist under the district's own GoDaddy account.</td></tr>
-          <tr><td>Microsoft 365</td><td>Email hosting</td><td>Confirmed via MX Toolbox (mail routes through mail.protection.outlook.com). Fully independent of Streamline &mdash; safe to change hosting without affecting email. <span class="resolved-tag">2026-08-20</span> @mcdwells.org confirmed as the only domain to use going forward.</td></tr>
+          <tr><td>Streamline</td><td>Website hosting + CMS</td><td>Proprietary platform ("Streamline Web"), not open-source. Renewal date TBD. Access credentials requested but not yet received.</td></tr>
+          <tr><td>GoDaddy</td><td>Domain registration / DNS</td><td>Confirmed via MX Toolbox as DNS host for mcdwells.org. Login access needed.</td></tr>
+          <tr><td>Microsoft 365</td><td>Email hosting</td><td>Confirmed via MX Toolbox (mail routes through mail.protection.outlook.com). Fully independent of Streamline &mdash; safe to change hosting without affecting email.</td></tr>
           <tr><td>NexBillPay</td><td>Bill payment processing</td><td>Separate from Streamline. Fee structure not yet confirmed.</td></tr>
-          <tr><td>SSL Certificate</td><td>Site security</td><td><span class="resolved-tag">2026-08-20</span> May be sourced from a separate vendor from hosting &mdash; still need to follow up on who supplies it.</td></tr>
+          <tr><td>SSL Certificate</td><td>Site security</td><td>Unknown if bundled with hosting or separate &mdash; to confirm.</td></tr>
           <tr><td>Document storage</td><td>Board minutes, financials, etc.</td><td>Possibly SharePoint via M365 &mdash; to confirm.</td></tr>
           <tr><td>IT support</td><td>General tech support</td><td>Unknown if a contract exists &mdash; to confirm.</td></tr>
         </tbody>
@@ -677,10 +667,6 @@
     <div class="callout note">
       <span class="label">Status</span>
       Logo concepts are ready for review: <a href="file:///C:/Users/patri/Desktop/Maricopa%20Water%20Project%20Management/Logo%20concept%20preview.html">C:\Users\patri\Desktop\Maricopa Water Project Management\Logo concept preview.html</a>. These will be presented to Adam and Justin at the kickoff meeting. Part II's design section has the fuller inventory of concepts explored so far in the VS Code build &mdash; see <a href="#design">&sect;8, Design &amp; branding status</a>.
-    </div>
-    <div class="callout rec">
-      <span class="label">Decision recorded &mdash; 2026-08-20</span>
-      The logo redesign needs board sign-off before it's final &mdash; not a decision Adam/Justin/Sidney can make alone. Action: send the team the current logo concepts for review ahead of the board.
     </div>
   </section>
 
@@ -850,12 +836,12 @@
     <div class="section-num">08</div>
     <h2>Design &amp; branding status</h2>
     <ul class="plain">
-      <li><strong>Live site tagline:</strong> "Committed to Providing Clean, Safe Water for All Our Residents." <strong>Redesign homepage copy:</strong> "Water service made simpler for our community." These read as two different positioning ideas. <span class="resolved-tag">2026-08-20</span> Team is open to suggestions; the redesign's draft was raised without objection but not formally adopted as final.</li>
-      <li><strong>Color scheme:</strong> the redesign's <code>master</code> branch currently uses the "Corporate Blue" palette (steel blue on deep navy), chosen from five alternatives built during this process. Four other palettes exist on branches if the direction should be revisited. <span class="resolved-tag">2026-08-20</span> Raised with the team for confirmation — treat as pending, not fully locked.</li>
-      <li><strong>Logo:</strong> still undecided. Multiple concepts exist (a water-droplet mark, a desert-horizon mark, an MC monogram, a canal-M mark, a Sonoran-flow mark, a modern-wave-M mark, and three wordmark-integrated concepts with a spout/valve/land-water motif built into the letters). <span class="resolved-tag">2026-08-20</span> Needs board sign-off — not something Adam/Justin/Sidney can finalize alone. Worth a decision before the WordPress build, since the header/favicon depend on it.</li>
+      <li><strong>Live site tagline:</strong> "Committed to Providing Clean, Safe Water for All Our Residents." <strong>Redesign homepage copy:</strong> "Water service made simpler for our community." These read as two different positioning ideas — worth an explicit decision rather than letting it default.</li>
+      <li><strong>Color scheme:</strong> the redesign's <code>master</code> branch currently uses the "Corporate Blue" palette (steel blue on deep navy), chosen from five alternatives built during this process. Four other palettes exist on branches if the direction should be revisited.</li>
+      <li><strong>Logo:</strong> still undecided. Multiple concepts exist (a water-droplet mark, a desert-horizon mark, an MC monogram, a canal-M mark, a Sonoran-flow mark, a modern-wave-M mark, and three wordmark-integrated concepts with a spout/valve/land-water motif built into the letters). None chosen yet — worth a decision before the WordPress build, since the header/favicon depend on it.</li>
       <li><strong>Visual maturity:</strong> the live site is functional but visually dated (2019-era municipal-CMS look, per Streamline). The redesign is a clear visual upgrade as far as it's built — the gap is content coverage, not design quality.</li>
     </ul>
-    <p style="color:var(--muted); font-size:.85rem;">As of 2026-08-20: logo, palette, and tagline all moved from "no decision made" to "in progress, pending confirmation" — see <a href="#changelog">changelog</a>. None is fully locked yet.</p>
+    <p style="color:var(--muted); font-size:.85rem;">Unchanged since v6 — no logo, palette, or tagline decisions were made in the 2026-08-18 build session (see <a href="#changelog">changelog</a>).</p>
   </section>
 
   <section id="data">
@@ -865,10 +851,10 @@
       <table>
         <thead><tr><th>Item</th><th>Live site</th><th>Redesign</th><th>Note</th></tr></thead>
         <tbody>
-          <tr><td>Spanish-language phone line</td><td>(520) 757-2976</td><td>(520) 752-2976</td><td><span class="resolved-tag">Confirmed 2026-08-20</span> (520) 757-2976 is correct — the redesign's number needs fixing in contact.html/footer.</td></tr>
-          <tr><td>Service-request email</td><td>Office@MaricopaConsolidated.org</td><td>mcdoffice@mcdwells.org (only address used)</td><td><span class="resolved-tag">Confirmed 2026-08-20</span> @mcdwells.org is authoritative — no other domain, including maricopaconsolidated.org, should be used.</td></tr>
-          <tr><td>Facebook presence</td><td>Linked in header</td><td>Not present</td><td><span class="resolved-tag">Decided 2026-08-20</span> Do not carry over the live site's Facebook link as-is — leave a placeholder for social links until the district's Facebook page is itself redesigned.</td></tr>
-          <tr><td>Account portal ("Sign in")</td><td>Present (Streamline CMS)</td><td>Not present</td><td><span class="resolved-tag">Confirmed 2026-08-20</span> Not needed. May go away entirely if the district moves off Streamline.</td></tr>
+          <tr><td>Spanish-language phone line</td><td>(520) 757-2976</td><td>(520) 752-2976</td><td>Confirmed twice on the live site (homepage + contact page) — the redesign's number looks like a transposition of the emergency line's last four digits (752-7517). Worth a direct call to confirm before fixing.</td></tr>
+          <tr><td>Service-request email</td><td>Office@MaricopaConsolidated.org</td><td>mcdoffice@mcdwells.org (only address used)</td><td>Live site uses <em>two different domains</em> for email depending on the page — worth asking the district which is authoritative rather than guessing.</td></tr>
+          <tr><td>Facebook presence</td><td>Linked in header</td><td>Not present</td><td>Simple addition if desired.</td></tr>
+          <tr><td>Account portal ("Sign in")</td><td>Present (Streamline CMS)</td><td>Not present</td><td>Unclear if this is used by residents in practice or a leftover platform feature — worth asking whether it's needed in the redesign.</td></tr>
         </tbody>
       </table>
     </div>
@@ -878,20 +864,20 @@
     <div class="section-num">10</div>
     <h2>All open questions for this meeting</h2>
     <ol class="plain">
-      <li>Which logo concept should move forward to production? (§8) <span class="resolved-tag">In progress</span> — 2026-08-20: needs board sign-off; sending concepts to the team for review first.</li>
-      <li>Is the current "Corporate Blue" color direction final, or should another palette be reconsidered? (§8) <span class="resolved-tag">In progress</span> — 2026-08-20: raised with the team for confirmation, not yet locked.</li>
-      <li>Keep the live site's tagline, or commit to the redesign's new positioning copy? (§8) <span class="resolved-tag">In progress</span> — 2026-08-20: team open to suggestions; redesign draft raised without objection but not formally adopted.</li>
-      <li>Confirm the correct Spanish-language phone number — (520) 757-2976 or 752-2976. (§9) <span class="resolved-tag">Confirmed 2026-08-20</span> — 757-2976 is correct.</li>
-      <li>Which email domain is authoritative for service applications — mcdwells.org or maricopaconsolidated.org? (§9) <span class="resolved-tag">Confirmed 2026-08-20</span> — @mcdwells.org only.</li>
-      <li>Do Staff and Boards need dedicated pages, or can both live inside one About/Governance page? (§3) <span class="resolved-tag">Implemented 2026-08-18</span> — built as one page (about.html); <span class="resolved-tag">Confirmed 2026-08-20</span> as-is.</li>
-      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? (§4) <span class="resolved-tag">Implemented 2026-08-18</span> — built as one page (services.html); <span class="resolved-tag">Confirmed 2026-08-20</span> as-is.</li>
-      <li>Who owns supplying and approving current water-quality advisory content before launch? (§6) <span class="resolved-tag">Decided 2026-08-20</span> — Sidney, will supply the CCR/advisory document set.</li>
-      <li>Should CCR reports stay organized by the three merged communities, or consolidate under one identity? (§6) <span class="resolved-tag">Decided 2026-08-20</span> — follow Sidney's document set.</li>
-      <li>Is the missing 2022 board-meeting archive year (and 2023 CCR gap) worth tracking down, or accepted as a known gap? <span class="resolved-tag">Raised 2026-08-20</span> — still the district's decision.</li>
-      <li>Should notices auto-archive after a set period instead of accumulating indefinitely? (§7) <span class="resolved-tag">Decided 2026-08-20</span> — 3 yrs live on site, all years hardcopy in office, older than 3 archived; auto-archiving on-site is optional.</li>
-      <li>Is the live site's account "Sign in" feature something residents actually use, or safe to drop? (§9) <span class="resolved-tag">Confirmed 2026-08-20</span> — not needed.</li>
-      <li>Should service-area.html's address lookup be made real (backed by an actual boundary dataset) rather than the current keyword-match placeholder? <span class="resolved-tag">Decided 2026-08-20</span> — yes; district will supply the boundary map.</li>
-      <li>Timing: agree to hold off on the WordPress conversion until this IA and the logo/color decisions are locked, to avoid re-templating work? (§12) — still open; 2026-08-20 also surfaced that staff is comfortable with the current CMS, worth weighing before conversion regardless of timing.</li>
+      <li>Which logo concept should move forward to production? (§8)</li>
+      <li>Is the current "Corporate Blue" color direction final, or should another palette be reconsidered? (§8)</li>
+      <li>Keep the live site's tagline, or commit to the redesign's new positioning copy? (§8)</li>
+      <li>Confirm the correct Spanish-language phone number — (520) 757-2976 or 752-2976. (§9)</li>
+      <li>Which email domain is authoritative for service applications — mcdwells.org or maricopaconsolidated.org? (§9)</li>
+      <li>Do Staff and Boards need dedicated pages, or can both live inside one About/Governance page? (§3) <span class="resolved-tag">Implemented 2026-08-18</span> — built as one page (about.html); confirm or revisit.</li>
+      <li>Should the three service-application types (new service, construction, hydrant) get separate pages, or one page with three forms? (§4) <span class="resolved-tag">Implemented 2026-08-18</span> — built as one page (services.html); confirm or revisit.</li>
+      <li>Who owns supplying and approving current water-quality advisory content before launch? (§6)</li>
+      <li>Should CCR reports stay organized by the three merged communities, or consolidate under one identity? (§6)</li>
+      <li>Is the missing 2022 board-meeting archive year (and 2023 CCR gap) worth tracking down, or accepted as a known gap?</li>
+      <li>Should notices auto-archive after a set period instead of accumulating indefinitely? (§7)</li>
+      <li>Is the live site's account "Sign in" feature something residents actually use, or safe to drop? (§9)</li>
+      <li>Should service-area.html's address lookup be made real (backed by an actual boundary dataset) rather than the current keyword-match placeholder?</li>
+      <li>Timing: agree to hold off on the WordPress conversion until this IA and the logo/color decisions are locked, to avoid re-templating work? (§12)</li>
     </ol>
   </section>
 
@@ -958,7 +944,7 @@
           <text x="10" y="375" style="font-size:9.5px" fill="var(--good)">■ green border = still not built</text>
         </svg>
       </figure>
-      <figcaption>As of 2026-08-18: About, Services, and Rates &amp; Policies (formerly green-bordered) are now built as real pages — <code>about.html</code>, <code>services.html</code>, <code>rates.html</code>. All three are structural placeholders; none of the content behind them has been written yet. Service-area.html already exists too and just needs its lookup made real and its nav link restored (marked with ↑) — as of 2026-08-20 the district has agreed to supply the physical boundary map that unblocks that. CCR reports and Current advisories (still green) remain genuinely new content to write inside water-quality.html, with Sidney supplying that document set per the 2026-08-20 meeting.</figcaption>
+      <figcaption>As of 2026-08-18: About, Services, and Rates &amp; Policies (formerly green-bordered) are now built as real pages — <code>about.html</code>, <code>services.html</code>, <code>rates.html</code>. All three are structural placeholders; none of the content behind them has been written yet. Service-area.html already exists too and just needs its lookup made real and its nav link restored (marked with ↑). CCR reports and Current advisories (still green) remain genuinely new content to write inside water-quality.html.</figcaption>
     </div>
   </section>
 
@@ -968,19 +954,19 @@
     <div class="roadmap">
       <div class="step">
         <div class="num">1</div>
-        <div><h3>Resolve open questions in this meeting <span class="status partial">9 of 14 resolved</span></h3><p>2026-08-20 resolved the content-ownership and data-verification items (§10 items 4–9, 11–13). Still open: §10 items 1–3 (logo, palette, tagline) are in progress but need final sign-off/board approval; item 10 (2022 archive gap) is the district's to decide; item 14 (WordPress timing) is unaddressed, though the CMS-comfort signal from this meeting is worth weighing first.</p></div>
+        <div><h3>Resolve open questions in this meeting <span class="status partial">2 of 14 resolved</span></h3><p>Especially §10 items 1–3 (logo, palette, tagline) and 8–9 (water-quality content ownership, CCR organization) — these are the decisions that would force rework if made after building. Items 6–7 (About/Services page structure) were acted on 2026-08-18; confirm those calls or flag for revisit.</p></div>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <div><h3>Sign off on the proposed IA (§11), or amend it <span class="status partial">Partially validated</span></h3><p>This becomes the actual page/template list for the WordPress build later — get it right once. About, Services, and now the service-area lookup direction are validated; the full 8-area structure still needs a formal sign-off.</p></div>
+        <div><h3>Sign off on the proposed IA (§11), or amend it <span class="status partial">Partially validated</span></h3><p>This becomes the actual page/template list for the WordPress build later — get it right once. The About and Services consolidation decisions are now built against this IA; the rest (Billing/Water Quality grouping) still needs a formal sign-off.</p></div>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <div><h3>Collect real content for the gap areas <span class="status partial">Owners identified</span></h3><p>Priority order: current water-quality advisories (Sidney supplying the document set — see §6), rates table (verify against §5), board/staff roster, service-application requirements. All 5 pages built 2026-08-18 are still placeholder shells; content itself hasn't arrived yet, but who supplies it is now settled for water quality.</p></div>
+        <div><h3>Collect real content for the gap areas <span class="status missing">Not started</span></h3><p>Priority order: current water-quality advisories (compliance-sensitive), rates table (verify against §5), board/staff roster, service-application requirements. All 5 pages built 2026-08-18 are still placeholder shells waiting on this step.</p></div>
       </div>
       <div class="step">
         <div class="num">4</div>
-        <div><h3>Finalize logo and confirm the color palette <span class="status partial">In progress</span></h3><p>Logo needs board sign-off; concepts are being sent to the team for review first. Palette ("Corporate Blue"/navy) raised with the team for confirmation. Neither is locked yet, but both moved from "not started" on 2026-08-20.</p></div>
+        <div><h3>Finalize logo and confirm the color palette <span class="status missing">Not started</span></h3><p>Both are close to done — pick one of each so the header/favicon/brand assets stop being a moving target.</p></div>
       </div>
       <div class="step">
         <div class="num">5</div>
@@ -1014,14 +1000,14 @@
     </ul>
   </section>
   <footer class="doc-footer">
-    MCDWID Website Redesign &mdash; Project Reference &amp; Redesign Audit &mdash; v8. Part I prepared by Patrick from working notes; Part II prepared from the maricopa-dwid-redesign working repository and the live maricopadwid.org site (pulled 2026-08-17), with the page inventory and IA updated 2026-08-18 to reflect that session's build, and the agenda decisions updated 2026-08-20 to reflect that meeting. v6 and v7 are archived at <code>docs/archive/mcdwid-combined-reference-v6.html</code> and <code>docs/archive/mcdwid-combined-reference-v7.html</code>. Living document &mdash; update as the project progresses. For Patrick's reference only, not for public distribution.
+    MCDWID Website Redesign &mdash; Project Reference &amp; Redesign Audit &mdash; v7. Part I prepared by Patrick from working notes; Part II prepared from the maricopa-dwid-redesign working repository and the live maricopadwid.org site (pulled 2026-08-17), with the page inventory and IA updated 2026-08-18 to reflect that session's build. v6 is archived at <code>docs/archive/mcdwid-combined-reference-v6.html</code>. Living document &mdash; update as the project progresses. For Patrick's reference only, not for public distribution.
   </footer>
 
 </div>
 
 <script>
 (function () {
-  var STORAGE_KEY = 'mcdwid_meeting_notes_v8';
+  var STORAGE_KEY = 'mcdwid_meeting_notes_v7';
 
   var dateField = document.getElementById('mn-date');
   var namedFields = [
@@ -1086,7 +1072,7 @@
     if (!confirm('Clear all typed notes and decisions on this page? This cannot be undone.')) return;
     allFields.forEach(function (el) { el.textContent = ''; });
     try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
-    dateField.textContent = '';
+    dateField.textContent = '2026-08-20';
     setStatus('Cleared');
   });
 
