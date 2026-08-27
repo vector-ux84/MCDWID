@@ -1,0 +1,62 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "note": "Draft boundary data for Maricopa Consolidated DWID. Built from OpenStreetMap/Nominatim geocoding of named streets visible on three boundary-map images supplied 2026-08-26, cross-referenced against the district's merger history (about.html). NOT a substitute for the district's own GIS/survey data. See per-feature \"confidence\" and \"notes\" properties before using this for anything customer-facing.",
+    "sources": [
+      "SADDLEBACK MAP FOR PAT.png",
+      "VALLEY MAP FOR PAT.png",
+      "IMAGE FOR PAT.png",
+      "OpenStreetMap Nominatim (nominatim.openstreetmap.org), retrieved 2026-08-26"
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Saddleback Vista",
+        "merged": 2017,
+        "confidence": "high",
+        "geometry_source": "polygon",
+        "notes": "Corners built by combining real Nominatim geocodes for the four bounding streets (N Pala Rd, W Jarrett Rd, N Anderson Rd, W Steen Rd) — border roads are close to true N-S/E-W here, so each corner = the E-W road's latitude paired with the N-S road's longitude. Cross-checked against N Saddleback Vista Ave's own geocoded path, which falls inside this box as expected. Still an approximation, not a surveyed boundary — verify against a district GIS file before treating corners as exact."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-111.9373, 33.0216],
+          [-111.9280, 33.0215],
+          [-111.9280, 33.0142],
+          [-111.9375, 33.0142],
+          [-111.9373, 33.0216]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Valle Escondido",
+        "merged": 2020,
+        "confidence": "low",
+        "geometry_source": "approximate centroid only, not a polygon",
+        "notes": "Most of the interior street names read off VALLEY MAP FOR PAT.png (W Clayton Rd, W Meadowview Rd, W Reitz Ranch Rd, W Padilla Rd, W Carefree Pl) are not in OpenStreetMap near Maricopa — likely unpaved/private agricultural roads not tracked by the mapping service used. Only N Smith Rd and N John Wayne Pkwy geocoded successfully nearby. This point is the midpoint between those two real geocodes, meant only to place the area on a map roughly — it is NOT a boundary and should not be used for a point-in-polygon check. A real polygon here needs either the district's own GIS/parcel data or manual on-the-ground GPS tracing."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.0393, 33.0335]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Original Maricopa DWID core",
+        "merged": null,
+        "confidence": "low",
+        "geometry_source": "approximate centroid only, not a polygon",
+        "notes": "Source map (IMAGE FOR PAT.png) is a photographed paper plat map with a hand-drawn, irregular (non-rectangular) outline — not a shape that can be honestly reduced to corner coordinates from geocoding alone. This point is the midpoint of W Garvey Ave and W McDavid Rd geocodes, both of which returned real Maricopa-area results. Green Rd also geocoded nearby but with three widely-spread candidate segments, so it wasn't used in this centroid. Treat this as 'roughly here,' not a boundary."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.0573, 33.0603]
+      }
+    }
+  ]
+}
